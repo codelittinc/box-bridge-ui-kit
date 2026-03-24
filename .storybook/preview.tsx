@@ -15,6 +15,8 @@ const preview: Preview = {
           { value: "dark", title: "Dark" },
           { value: "teal", title: "Teal" },
           { value: "orange", title: "Orange" },
+          { value: "navyEstate", title: "Navy Estate" },
+          { value: "glacierTeal", title: "Glacier Teal" },
         ],
         dynamicTitle: true,
       },
