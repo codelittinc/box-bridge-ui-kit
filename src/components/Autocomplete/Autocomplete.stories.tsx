@@ -33,3 +33,20 @@ export const Default: Story = {
     );
   },
 };
+
+export const WithLabel: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | undefined>(undefined);
+    return (
+      <div style={{ maxWidth: 300 }}>
+        <Autocomplete
+          options={sampleOptions}
+          value={value}
+          onChange={setValue}
+          placeholder="Search users"
+          label="Users"
+        />
+      </div>
+    );
+  },
+};

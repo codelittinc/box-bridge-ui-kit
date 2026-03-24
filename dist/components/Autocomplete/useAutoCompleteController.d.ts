@@ -8,11 +8,15 @@ type Props = {
     ref: any;
 };
 type Response = {
-    matches: any;
+    matches: {
+        label: string;
+        value: number | string;
+    }[];
     open: boolean;
     setOpen: (value: boolean) => void;
-    handleChange: (value: any) => void;
+    searchValue: string;
     setSearchValue: (value: string) => void;
+    selectedLabel: string | undefined;
 };
 declare const useAutoCompleteController: ({ options, value, onChange, ref, }: Props) => Response;
 export default useAutoCompleteController;

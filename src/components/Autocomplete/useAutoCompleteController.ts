@@ -9,11 +9,12 @@ type Props = {
 };
 
 type Response = {
-  matches: any;
+  matches: { label: string; value: number | string }[];
   open: boolean;
   setOpen: (value: boolean) => void;
-  handleChange: (value: any) => void;
+  searchValue: string;
   setSearchValue: (value: string) => void;
+  selectedLabel: string | undefined;
 };
 
 const useAutoCompleteController = ({
@@ -24,9 +25,6 @@ const useAutoCompleteController = ({
 }: Props): Response => {
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const handleChange = (newValue: any) => {
-    onChange(newValue);
-  };
 
   const localInputRef = useRef(null);
   useImperativeHandle(ref, () => ({
@@ -36,6 +34,13 @@ const useAutoCompleteController = ({
       }
     },
   }));
+
+  const selectedLabel = useMemo(() => {
+    const selected = options.find(
+      (item) => String(item.value) === String(value)
+    );
+    return selected?.label;
+  }, [value, options]);
 
   const matches = useMemo(() => {
     if (!searchValue) return options;
@@ -52,8 +57,9 @@ const useAutoCompleteController = ({
     matches,
     open,
     setOpen,
-    handleChange,
+    searchValue,
     setSearchValue,
+    selectedLabel,
   };
 };
 

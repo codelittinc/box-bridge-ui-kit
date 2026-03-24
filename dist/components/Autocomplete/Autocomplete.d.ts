@@ -1,4 +1,5 @@
 export interface AutocompleteProps {
+    label?: string;
     multiple?: boolean;
     onChange: (value: any) => void;
     options: {

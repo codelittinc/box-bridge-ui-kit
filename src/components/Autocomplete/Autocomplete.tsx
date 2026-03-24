@@ -1,5 +1,4 @@
-import { startTransition, forwardRef, ForwardRefRenderFunction } from "react";
-import * as RadixSelect from "@radix-ui/react-select";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 import {
   Combobox,
   ComboboxItem,
@@ -7,12 +6,12 @@ import {
   ComboboxProvider,
 } from "@ariakit/react";
 import { ChevronUpDownIcon } from "./icons/ChevronUpDownIcon";
-import { SearchIcon } from "./icons/SearchIcon";
 import { CheckIcon } from "./icons/CheckIcon";
 import useAutoCompleteController from "./useAutoCompleteController";
 import styles from "./styles.module.css";
 
 export interface AutocompleteProps {
+  label?: string;
   multiple?: boolean;
   onChange: (value: any) => void;
   options: { label: string; value: number | string }[];
@@ -23,79 +22,64 @@ export interface AutocompleteProps {
 const AutocompleteComponent: ForwardRefRenderFunction<
   HTMLDivElement,
   AutocompleteProps
-> = ({ value, onChange, options, multiple, placeholder }, ref) => {
-  const { matches, open, setOpen, handleChange, setSearchValue } =
-    useAutoCompleteController({ options, value, onChange, ref });
+> = ({ value, onChange, options, placeholder, label }, ref) => {
+  const {
+    matches,
+    open,
+    setOpen,
+    searchValue,
+    setSearchValue,
+    selectedLabel,
+  } = useAutoCompleteController({ options, value, onChange, ref });
 
   return (
-    <RadixSelect.Root
-      value={value}
-      onValueChange={handleChange}
-      open={open}
-      onOpenChange={setOpen}
-    >
+    <div className={styles["wrapper"]}>
+      {label && <label className={styles["label"]}>{label}</label>}
       <ComboboxProvider
         open={open}
         setOpen={setOpen}
         resetValueOnHide
-        includesBaseElement={false}
-        setValue={(value) => {
-          startTransition(() => {
-            setSearchValue(value);
-            onChange(value);
-          });
-        }}
+        value={searchValue}
+        setValue={setSearchValue}
       >
-        <RadixSelect.Trigger className={styles["select"]}>
-          <RadixSelect.Value placeholder={placeholder} />
-          <RadixSelect.Icon className={styles["select-icon"]}>
+        <div className={styles["input-wrapper"]}>
+          <Combobox
+            placeholder={selectedLabel || placeholder || "Select..."}
+            className={styles["combobox"]}
+            autoSelect
+          />
+          <button
+            type="button"
+            className={styles["toggle-button"]}
+            onClick={() => setOpen(!open)}
+            tabIndex={-1}
+          >
             <ChevronUpDownIcon />
-          </RadixSelect.Icon>
-        </RadixSelect.Trigger>
-        <RadixSelect.Content
-          role="dialog"
-          position="popper"
-          className={styles["popover"]}
-          sideOffset={4}
-          alignOffset={-16}
-        >
-          <div className={styles["combobox-wrapper"]}>
-            <div className={styles["combobox-icon"]}>
-              <SearchIcon />
-            </div>
-            <Combobox
-              autoSelect
-              multiple={multiple}
-              placeholder={placeholder}
-              className={styles["combobox"]}
-              onBlurCapture={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            />
-          </div>
+          </button>
+        </div>
+        {open && matches.length > 0 && (
           <ComboboxList className={styles["listbox"]}>
-            {matches?.map(({ label, value }: any) => (
-              <RadixSelect.Item
-                key={value}
-                value={value}
-                asChild
+            {matches.map(({ label: optLabel, value: optValue }: any) => (
+              <ComboboxItem
+                key={optValue}
                 className={styles["item"]}
+                onClick={() => {
+                  onChange(optValue);
+                  setOpen(false);
+                }}
               >
-                <ComboboxItem>
-                  <RadixSelect.ItemText>{label}</RadixSelect.ItemText>
-                  <RadixSelect.ItemIndicator
-                    className={styles["item-indicator"]}
-                  >
+                <span className={styles["item-text"]}>{optLabel}</span>
+                {String(optValue) === String(value) && (
+                  <span className={styles["item-indicator"]}>
                     <CheckIcon />
-                  </RadixSelect.ItemIndicator>
-                </ComboboxItem>
-              </RadixSelect.Item>
+                  </span>
+                )}
+              </ComboboxItem>
             ))}
           </ComboboxList>
-        </RadixSelect.Content>
+        )}
       </ComboboxProvider>
-    </RadixSelect.Root>
+    </div>
   );
 };
 
