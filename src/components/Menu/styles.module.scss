@@ -1,0 +1,26 @@
+.menu {
+  box-shadow: none;
+  margin-top: 10px;
+
+  .menu-container {
+    align-items: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+
+    .menu-item {
+      border-radius: 5px;
+      color: var(--primary-main);
+      width: 100%;
+
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--primary-main) 10%,
+          transparent
+        );
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.accordionContainer {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.accordionHeader {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.accordionContent {
+  padding: 0 16px 16px;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.chevronClosed {
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}

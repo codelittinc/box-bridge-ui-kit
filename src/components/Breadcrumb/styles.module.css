@@ -1,0 +1,22 @@
+.breadcrumb {
+  display: flex;
+}
+
+.breadcrumb-item {
+  color: #016BB6;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.87rem;
+  font-weight: 400;
+  gap: 0.25rem;
+  line-height: 1.06rem;
+  padding-right: 0.56rem;
+  width: fit-content;
+}
+
+.breadcrumb-item:last-child {
+  color: #767676;
+  cursor: auto;
+}

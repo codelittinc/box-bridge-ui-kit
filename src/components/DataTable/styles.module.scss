@@ -1,0 +1,79 @@
+.container {
+  padding-bottom: 20px;
+}
+
+.table-container {
+  &[class*="MuiPaper-elevation"] {
+    background-color: transparent;
+  }
+}
+
+.table {
+  background-color: var(--gray-6);
+  color: var(--common-black);
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  gap: 20px;
+  line-height: 17px;
+  margin-bottom: 40px;
+  padding: 24px;
+}
+
+.table-row-active {
+  &[class*="MuiTableRow-root"] {
+    background-color: color-mix(in srgb, var(--primary-main) 20%, transparent);
+  }
+}
+
+.title {
+  font-weight: 600;
+}
+
+.header-item {
+  align-items: center;
+  color: var(--gray-1);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 400;
+  gap: 8px;
+  line-height: 15px;
+}
+
+.body-item-default,
+.body-item-approved,
+.body-item-declined,
+.body-item-pending {
+  color: var(--gray-1);
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
+  gap: 1.6px;
+  line-height: 15px;
+}
+
+.body-item-approved {
+  color: var(--success-main);
+}
+
+.body-item-declined {
+  color: var(--error-main);
+}
+
+.body-item-pending {
+  color: var(--warning-main);
+}
+
+.header-cell:nth-child(2) {
+  min-width: 181px;
+}
+
+.header-cell:nth-child(3) {
+  min-width: 73px;
+}
+
+.cell-content {
+  width: 100%;
+}

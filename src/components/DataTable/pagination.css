@@ -1,0 +1,74 @@
+/* Pagination container */
+ul[role="navigation"] {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+
+/* Pagination links */
+ul[role="navigation"] li a {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 14px;
+}
+
+/* Disabled previous/next links */
+ul[role="navigation"] li.previous.disabled a,
+ul[role="navigation"] li.next.disabled a {
+  cursor: not-allowed;
+  color: #ccc;
+  border-color: #f0f0f0;
+  background-color: #f8f8f8;
+}
+
+/* Selected/active page */
+ul[role="navigation"] li.selected a {
+  background-color: var(--primary-main, #007bff);
+  color: white;
+  border-color: var(--primary-main, #007bff);
+  cursor: default;
+}
+
+/* Pagination hover effect */
+ul[role="navigation"] li a:hover:not([aria-disabled="true"]) {
+  background-color: #f0f0f0;
+  color: var(--primary-main, #007bff);
+}
+
+/* Next/Previous buttons */
+ul[role="navigation"] li.previous a,
+ul[role="navigation"] li.next a {
+  font-weight: bold;
+}
+
+/* Break (...) styling */
+ul[role="navigation"] li.break a {
+  pointer-events: none;
+  cursor: default;
+  color: #999;
+  background-color: transparent;
+  border: none;
+}
+
+/* Responsive behavior */
+@media (max-width: 600px) {
+  ul[role="navigation"] {
+    font-size: 12px;
+  }
+
+  ul[role="navigation"] li a {
+    padding: 8px 10px;
+    margin: 0 3px;
+  }
+}

@@ -1,0 +1,75 @@
+.button {
+  &[class*="MuiButton-root"] {
+    box-shadow: none;
+    text-transform: none;
+    color: var(--primary-text);
+
+    &:disabled {
+      background-color: var(--gray-4);
+      color: var(--gray-5);
+
+      svg {
+        color: var(--gray-5);
+      }
+    }
+
+    &:active,
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.button-secondary {
+  &[class*="MuiButton-root"] {
+    background-color: var(--gray-3);
+    color: var(--primary-main);
+  }
+}
+
+.button-outlined {
+  &[class*="MuiButton-root"] {
+    border-color: var(--gray-2);
+    color: var(--gray-1);
+
+    &:disabled {
+      border: none;
+    }
+  }
+}
+
+.button-small {
+  &[class*="MuiButton-root"] {
+    height: 36px;
+  }
+}
+
+.button-medium {
+  &[class*="MuiButton-root"] {
+    height: 41px;
+  }
+}
+
+.button-large {
+  &[class*="MuiButton-root"] {
+    height: 48px;
+  }
+}
+
+.button-text {
+  &[class*="MuiButton-root"] {
+    color: var(--common-black);
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    height: 24px;
+    padding: 0;
+    text-align: left;
+    width: fit-content;
+
+    &:active,
+    &:hover {
+      background: transparent;
+    }
+  }
+}

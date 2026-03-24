@@ -1,0 +1,13 @@
+.radioLabel {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.radio {
+  &[class*="MuiButtonBase-root"] {
+    padding: 2px;
+  }
+}

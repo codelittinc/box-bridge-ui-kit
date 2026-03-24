@@ -1,0 +1,19 @@
+.typography {
+  font-family: "Inter", sans-serif;
+
+  &.bold {
+    font-weight: bold;
+  }
+
+  &.error {
+    color: var(--error-main);
+  }
+
+  &.success {
+    color: var(--success-main);
+  }
+
+  &.warning {
+    color: var(--warning-main);
+  }
+}
