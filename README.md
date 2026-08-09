@@ -15,7 +15,20 @@ npm install github:codelittinc/box-bridge-ui-kit
 You must install the following peer dependencies in your project:
 
 ```bash
-npm install react react-dom @mui/material @mui/icons-material @emotion/react @emotion/styled
+npm install react react-dom @emotion/react @emotion/styled
+```
+
+`@mui/material` and `@mui/icons-material` are **dependencies of this kit**, not
+peers — you do not install them yourself. Consuming apps should import MUI
+primitives from the kit rather than depending on MUI directly:
+
+```tsx
+// don't
+import { Box, Stack, TextField } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+
+// do
+import { Box, Stack, TextField, SendIcon } from "@codelittinc/box-bridge-ui-kit";
 ```
 
 Optional peer dependencies (install only if using the related components):

@@ -40,14 +40,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     if (category === ButtonCategory.text) variant = "text";
 
     return (
-      // variant/disableRipple come before the spread so they act as defaults
-      // derived from `category`: a caller passing either explicitly overrides
-      // them rather than having them silently discarded. className stays after
-      // the spread because it is merged, not replaced.
+      // variant/disableRipple are defaults derived from `category` that the
+      // caller can override. Resolved with ?? rather than by ordering: a JSX
+      // spread writes the key even when the value is undefined, so putting the
+      // defaults before the spread would let `variant={undefined}` fall through
+      // to MUI's own default ('text') instead of ours.
+      //
+      // className is merged rather than replaced. Note this only concatenates
+      // classes — kit rules are written as `[class*=MuiButton-root]`
+      // (specificity 0,2,0), so a caller's plain class still loses to them.
       <MuiButton
-        variant={variant}
-        disableRipple={category === ButtonCategory.text}
         {...otherProps}
+        variant={otherProps.variant ?? variant}
+        disableRipple={
+          otherProps.disableRipple ?? (category === ButtonCategory.text)
+        }
         ref={ref}
         className={classNames(
           styles[`button-${category}`],
