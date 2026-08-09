@@ -40,7 +40,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     if (category === ButtonCategory.text) variant = "text";
 
     return (
+      // variant/disableRipple come before the spread so they act as defaults
+      // derived from `category`: a caller passing either explicitly overrides
+      // them rather than having them silently discarded. className stays after
+      // the spread because it is merged, not replaced.
       <MuiButton
+        variant={variant}
+        disableRipple={category === ButtonCategory.text}
         {...otherProps}
         ref={ref}
         className={classNames(
@@ -49,8 +55,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           styles["button"],
           className
         )}
-        disableRipple={category === ButtonCategory.text}
-        variant={variant}
       />
     );
   }
