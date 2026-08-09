@@ -30,6 +30,13 @@ export default defineConfig({
         "match-sorter",
         "react-paginate",
       ],
+      output: {
+        // Every component here wraps MUI, which is client-only. Without this
+        // directive a React Server Component importing the kit pulls the whole
+        // bundle (incl. react-hook-form) into the server graph and fails to
+        // link. MUI ships the same directive for the same reason.
+        banner: '"use client";',
+      },
     },
     cssCodeSplit: false,
   },

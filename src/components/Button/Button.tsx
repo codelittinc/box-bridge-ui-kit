@@ -46,7 +46,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={classNames(
           styles[`button-${category}`],
           styles[`button-${height}`],
-          styles["button"]
+          styles["button"],
+          className
         )}
         disableRipple={category === ButtonCategory.text}
         variant={variant}
