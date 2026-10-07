@@ -1,5 +1,5 @@
 import React from "react";
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 import { BoxBridgeThemeProvider } from "../src/theme";
 import { themePresets } from "../src/theme/presets";
 

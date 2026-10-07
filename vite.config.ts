@@ -16,7 +16,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
       fileName: (format) => `index.${format === "es" ? "js" : "cjs"}`,
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         "react",
         "react-dom",
@@ -26,6 +26,9 @@ export default defineConfig({
         "react-hook-form",
         /^@radix-ui\//,
         /^@ariakit\//,
+        "classnames",
+        "match-sorter",
+        "react-paginate",
       ],
     },
     cssCodeSplit: false,
