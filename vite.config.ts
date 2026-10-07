@@ -12,11 +12,11 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: resolve(import.meta.dirname, "src/index.ts"),
       formats: ["es", "cjs"],
       fileName: (format) => `index.${format === "es" ? "js" : "cjs"}`,
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         "react",
         "react-dom",
@@ -26,13 +26,16 @@ export default defineConfig({
         "react-hook-form",
         /^@radix-ui\//,
         /^@ariakit\//,
+        "classnames",
+        "match-sorter",
+        "react-paginate",
       ],
     },
     cssCodeSplit: false,
   },
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src"),
+      "@": resolve(import.meta.dirname, "src"),
     },
   },
 });

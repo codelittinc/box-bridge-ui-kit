@@ -10,5 +10,5 @@ export type MenuProps = Omit<MuiMenuProps, "open"> & {
     menuItems?: MenuItemConfig[];
     onClose: () => void;
 };
-declare const Menu: ({ anchorEl, children, menuItems, onClose, ...otherProps }: MenuProps) => import("react/jsx-runtime").JSX.Element;
+declare const Menu: ({ anchorEl, children, menuItems, onClose, ...otherProps }: MenuProps) => React.JSX.Element;
 export default Menu;

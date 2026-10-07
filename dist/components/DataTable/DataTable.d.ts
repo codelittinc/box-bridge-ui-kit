@@ -24,5 +24,5 @@ export type DataTableProps<T> = {
     selectedRows?: string[];
     title?: string;
 };
-declare const DataTable: <T extends Record<string, unknown>>({ columns, emptyTableMessage, isLoading, onPageChange, onRowHover, pagination, selectedPage, selectedRows, title, }: DataTableProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const DataTable: <T extends Record<string, unknown>>({ columns, emptyTableMessage, isLoading, onPageChange, onRowHover, pagination, selectedPage, selectedRows, title, }: DataTableProps<T>) => React.JSX.Element;
 export default DataTable;

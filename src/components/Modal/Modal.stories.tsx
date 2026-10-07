@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import Modal from "./Modal";
-import Button from "../Button/Button";
+import { Button, ButtonCategory } from "../Button";
 
 const meta: Meta<typeof Modal> = {
   title: "Components/Feedback/Modal",
@@ -20,7 +20,7 @@ export const Default: Story = {
         <Modal open={open} onClose={() => setOpen(false)} title="Confirm Action">
           <p>Are you sure you want to proceed with this action?</p>
           <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 16 }}>
-            <Button category="outlined" as any onClick={() => setOpen(false)}>Cancel</Button>
+            <Button category={ButtonCategory.outlined} onClick={() => setOpen(false)}>Cancel</Button>
             <Button onClick={() => setOpen(false)}>Confirm</Button>
           </div>
         </Modal>

@@ -4,5 +4,5 @@ export type RadioButtonProps = {
     name: string;
     onChange: () => void;
 };
-declare const RadioButton: ({ label, name, checked, onChange }: RadioButtonProps) => import("react/jsx-runtime").JSX.Element;
+declare const RadioButton: ({ label, name, checked, onChange }: RadioButtonProps) => import('react').JSX.Element;
 export default RadioButton;

@@ -7,5 +7,5 @@ export type FileInputControllerProps<T extends FieldValues> = {
     accept?: string;
     existingFileName?: string;
 };
-declare const FileInputController: <T extends FieldValues>({ name, control, required, fieldTitle, accept, existingFileName, }: FileInputControllerProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const FileInputController: <T extends FieldValues>({ name, control, required, fieldTitle, accept, existingFileName, }: FileInputControllerProps<T>) => import('react').JSX.Element;
 export default FileInputController;

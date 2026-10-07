@@ -16,8 +16,12 @@ jobs:
           node-version: "20"
           cache: "npm"
       - run: npm ci
-      - run: npx tsc --noEmit
+      - run: npm run lint
       - run: npm run build
+      - name: Smoke-test built package imports
+        run: |
+          node --input-type=module -e "await import('./dist/index.js')"
+          node -e "require('./dist/index.cjs')"
       - run: npm run build-storybook
 
   publish:

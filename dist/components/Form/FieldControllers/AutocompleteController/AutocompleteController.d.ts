@@ -11,5 +11,5 @@ export type AutocompleteControllerProps<T extends FieldValues> = {
     required?: boolean;
     withObjectValue?: boolean;
 };
-declare const AutocompleteController: <T extends FieldValues>({ name, control, required, options, withObjectValue, ...rest }: AutocompleteControllerProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const AutocompleteController: <T extends FieldValues>({ name, control, required, options, withObjectValue, ...rest }: AutocompleteControllerProps<T>) => import('react').JSX.Element;
 export default AutocompleteController;

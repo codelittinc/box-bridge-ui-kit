@@ -42,8 +42,7 @@ const Drawer = ({
       <Stack direction="column">
         <Stack
           direction="row"
-          justifyContent="space-between"
-          alignItems="center"
+          sx={{ justifyContent: "space-between", alignItems: "center" }}
           className={styles.drawerHeader}
         >
           <Typography variant="h6" className={styles.title}>
@@ -60,8 +59,8 @@ const Drawer = ({
         <Box className={styles.drawerContent}>{children}</Box>
         <Stack
           direction="row"
-          justifyContent="flex-end"
           spacing={1}
+          sx={{ justifyContent: "flex-end" }}
           className={styles.drawerFooter}
         >
           {onCancel && (

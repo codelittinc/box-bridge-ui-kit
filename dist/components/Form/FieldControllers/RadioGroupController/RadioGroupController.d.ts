@@ -1,3 +1,4 @@
+import { default as React } from 'react';
 import { Control, FieldValues, Path } from 'react-hook-form';
 export type RadioGroupControllerProps<T extends FieldValues> = {
     control: Control<T>;
@@ -9,5 +10,5 @@ export type RadioGroupControllerProps<T extends FieldValues> = {
     }>;
     onValueChange?: (value: string) => void;
 };
-declare const RadioGroupController: <T extends FieldValues>({ name, control, fieldTitle, options, onValueChange, }: RadioGroupControllerProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const RadioGroupController: <T extends FieldValues>({ name, control, fieldTitle, options, onValueChange, }: RadioGroupControllerProps<T>) => React.JSX.Element;
 export default RadioGroupController;

@@ -16,12 +16,11 @@ const Accordion = ({ title, children, defaultOpen = true }: AccordionProps) => {
     <Box className={styles.accordionContainer}>
       <Stack
         direction="row"
-        justifyContent="space-between"
-        alignItems="center"
+        sx={{ justifyContent: "space-between", alignItems: "center" }}
         className={styles.accordionHeader}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Typography variant="body2" fontWeight="medium">
+        <Typography variant="body2" sx={{ fontWeight: "medium" }}>
           {title}
         </Typography>
         <ExpandMoreIcon
