@@ -9,5 +9,5 @@ export type TextInputControllerProps<T extends FieldValues> = {
     required?: boolean;
     type?: string;
 } & Omit<TextFieldProps, "name">;
-declare const TextInputController: <T extends FieldValues>({ control, disabled, fieldTitle, name, placeholder, required, type, ...rest }: TextInputControllerProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const TextInputController: <T extends FieldValues>({ control, disabled, fieldTitle, name, placeholder, required, type, ...rest }: TextInputControllerProps<T>) => import('react').JSX.Element;
 export default TextInputController;

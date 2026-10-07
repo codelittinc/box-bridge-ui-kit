@@ -15,12 +15,14 @@ function Modal({ open, onClose, children, title, maxWidth = "420px" }: ModalProp
     <Dialog
       open={open}
       onClose={onClose}
-      PaperProps={{
-        sx: {
-          maxWidth,
-          width: "100%",
+      slotProps={{
+        paper: {
+          sx: {
+            maxWidth,
+            width: "100%",
+          },
+          className: styles["modal"],
         },
-        className: styles["modal"],
       }}
     >
       <DialogTitle className={styles["modal-title"]}>{title}</DialogTitle>

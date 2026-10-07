@@ -3,11 +3,11 @@ import React from "react";
 
 export type LinkProps = MuiLinkProps;
 
-const Link: React.FC<LinkProps> = ({ children, ...otherProps }) => {
+const Link: React.FC<LinkProps> = ({ children, sx, ...otherProps }) => {
   return (
     <MuiLink
       {...otherProps}
-      fontSize={"12px"}
+      sx={[{ fontSize: "12px" }, ...(Array.isArray(sx) ? sx : [sx])]}
       className={`${otherProps.className || ""}`}
       underline="hover"
       color="primary"

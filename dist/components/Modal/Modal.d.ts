@@ -6,5 +6,5 @@ export type ModalProps = {
     title: string;
     maxWidth?: string;
 };
-declare function Modal({ open, onClose, children, title, maxWidth }: ModalProps): import("react/jsx-runtime").JSX.Element;
+declare function Modal({ open, onClose, children, title, maxWidth }: ModalProps): React.JSX.Element;
 export default Modal;

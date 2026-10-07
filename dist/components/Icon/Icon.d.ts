@@ -22,5 +22,5 @@ export type IconProps = {
     style?: React.CSSProperties;
     basePath?: string;
 };
-declare const Icon: ({ iconKey, width, height, className, style, basePath, }: IconProps) => import("react/jsx-runtime").JSX.Element;
+declare const Icon: ({ iconKey, width, height, className, style, basePath, }: IconProps) => React.JSX.Element;
 export default Icon;

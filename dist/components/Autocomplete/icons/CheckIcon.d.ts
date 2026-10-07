@@ -1,1 +1,1 @@
-export declare function CheckIcon(): import("react/jsx-runtime").JSX.Element;
+export declare function CheckIcon(): import('react').JSX.Element;

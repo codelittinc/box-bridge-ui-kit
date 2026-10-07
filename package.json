@@ -5,8 +5,13 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
-  "sideEffects": ["**/*.css", "**/*.scss"],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
   "scripts": {
     "build": "vite build",
     "dev": "storybook dev -p 6006",
@@ -19,44 +24,51 @@
     "@ariakit/react": "^0.4.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
-    "@mui/icons-material": "^7.0.0",
-    "@mui/material": "^7.0.0",
+    "@mui/icons-material": "^7.0.0 || ^9.0.0",
+    "@mui/material": "^7.0.0 || ^9.0.0",
+    "@radix-ui/react-select": "^2.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
-    "react-hook-form": "^7.0.0",
-    "@radix-ui/react-select": "^2.0.0"
+    "react-hook-form": "^7.0.0"
   },
   "peerDependenciesMeta": {
-    "react-hook-form": { "optional": true },
-    "@radix-ui/react-select": { "optional": true },
-    "@ariakit/react": { "optional": true }
+    "react-hook-form": {
+      "optional": true
+    },
+    "@radix-ui/react-select": {
+      "optional": true
+    },
+    "@ariakit/react": {
+      "optional": true
+    }
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "match-sorter": "^8.0.0",
-    "react-paginate": "^8.2.0"
+    "match-sorter": "^8.3.0",
+    "react-paginate": "^8.3.0"
   },
   "devDependencies": {
-    "@ariakit/react": "^0.4.18",
+    "@ariakit/react": "^0.4.41",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^7.3.1",
-    "@mui/material": "^7.3.1",
-    "@radix-ui/react-select": "^2.1.6",
-    "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/react": "^8.6.14",
-    "@storybook/react-vite": "^8.6.14",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.0",
-    "@vitejs/plugin-react": "^4.4.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-hook-form": "^7.54.0",
-    "sass": "^1.91.0",
-    "storybook": "^8.6.14",
-    "typescript": "^5.9.2",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4"
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.4.0",
+    "@mui/material": "^9.4.0",
+    "@radix-ui/react-select": "^2.3.8",
+    "@storybook/addon-docs": "^10.6.1",
+    "@storybook/react": "^10.6.1",
+    "@storybook/react-vite": "^10.6.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@typescript/typescript6": "^6.0.2",
+    "@vitejs/plugin-react": "^6.1.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-hook-form": "^7.89.0",
+    "sass": "^1.105.1",
+    "storybook": "^10.6.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3",
+    "vite-plugin-dts": "^5.1.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

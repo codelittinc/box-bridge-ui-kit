@@ -30,7 +30,7 @@ function Form({
     <form onSubmit={handleSubmit}>
       <Box>
         <Box sx={{ width: "100%" }}>{children}</Box>
-        <Stack direction="row" justifyContent="flex-end" sx={{ mt: "18px" }}>
+        <Stack direction="row" sx={{ justifyContent: "flex-end", mt: "18px" }}>
           <Stack direction="row" spacing={2}>
             {onCancel ? (
               <Button

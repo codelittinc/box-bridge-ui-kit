@@ -28,8 +28,7 @@ const FileInputController = <T extends FieldValues>({
       render={({ field: { onChange }, fieldState: { error } }) => (
         <Stack
           direction="column"
-          alignItems="flex-start"
-          sx={{ width: "100%" }}
+          sx={{ alignItems: "flex-start", width: "100%" }}
         >
           {fieldTitle && (
             <Typography

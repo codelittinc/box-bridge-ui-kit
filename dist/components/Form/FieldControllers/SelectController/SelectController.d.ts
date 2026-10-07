@@ -10,5 +10,5 @@ export type SelectControllerProps<T extends FieldValues> = {
         label: string;
     }>;
 };
-declare const SelectController: <T extends FieldValues>({ control, name, fieldTitle, placeholder, required, options, }: SelectControllerProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const SelectController: <T extends FieldValues>({ control, name, fieldTitle, placeholder, required, options, }: SelectControllerProps<T>) => import('react').JSX.Element;
 export default SelectController;

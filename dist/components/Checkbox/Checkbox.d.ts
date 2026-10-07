@@ -5,5 +5,5 @@ export type CheckboxProps = {
     onChange: (checked: boolean) => void;
     iconKey?: IconKey;
 };
-declare const Checkbox: ({ label, checked, onChange, iconKey }: CheckboxProps) => import("react/jsx-runtime").JSX.Element;
+declare const Checkbox: ({ label, checked, onChange, iconKey }: CheckboxProps) => import('react').JSX.Element;
 export default Checkbox;

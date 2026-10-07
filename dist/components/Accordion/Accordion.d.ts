@@ -4,5 +4,5 @@ export type AccordionProps = {
     children: React.ReactNode;
     defaultOpen?: boolean;
 };
-declare const Accordion: ({ title, children, defaultOpen }: AccordionProps) => import("react/jsx-runtime").JSX.Element;
+declare const Accordion: ({ title, children, defaultOpen }: AccordionProps) => React.JSX.Element;
 export default Accordion;
