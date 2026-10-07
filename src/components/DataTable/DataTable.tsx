@@ -10,11 +10,18 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
-import ReactPaginate from "react-paginate";
+import ReactPaginateImport from "react-paginate";
 import { LoadingContent } from "../LoadingContent";
 import { EmptyContent } from "../EmptyContent";
 import styles from "./styles.module.scss";
 import "./pagination.css";
+
+// react-paginate is CJS flagged with __esModule. Bundlers that follow Node's
+// ESM interop (Vite 8, Node SSR) hand back the module object as the default
+// import instead of the component, so unwrap it.
+const ReactPaginate =
+  (ReactPaginateImport as unknown as { default?: typeof ReactPaginateImport })
+    .default ?? ReactPaginateImport;
 
 export type ItemsPagination<T> = {
   entries: T[];
