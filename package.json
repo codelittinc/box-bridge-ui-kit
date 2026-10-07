@@ -18,7 +18,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "node ./node_modules/typescript/bin/tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "heroku-postbuild": "npm run build-storybook"
   },
   "peerDependencies": {
     "@ariakit/react": "^0.4.0",
