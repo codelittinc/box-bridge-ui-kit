@@ -5,7 +5,7 @@ export { default as AddIcon } from "@mui/icons-material/Add";
 export { default as ClearIcon } from "@mui/icons-material/Clear";
 export { default as CloseIcon } from "@mui/icons-material/Close";
 export { default as DeleteIcon } from "@mui/icons-material/Delete";
-export { default as DeleteOutlineIcon } from "@mui/icons-material/DeleteOutline";
+export { default as DeleteOutlineIcon } from "@mui/icons-material/DeleteOutlineOutlined";
 export { default as EditIcon } from "@mui/icons-material/Edit";
 export { default as MoreHorizIcon } from "@mui/icons-material/MoreHoriz";
 export { default as SearchIcon } from "@mui/icons-material/Search";
