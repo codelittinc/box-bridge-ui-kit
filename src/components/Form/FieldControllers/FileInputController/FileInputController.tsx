@@ -32,14 +32,13 @@ const FileInputController = <T extends FieldValues>({
         >
           {fieldTitle && (
             <Typography
-              color="text.secondary"
               sx={{
+                color: "text.secondary",
                 fontSize: "14px",
                 fontWeight: 700,
                 mb: "8px",
-                mt: "4px",
-              }}
-            >
+                mt: "4px"
+              }}>
               {fieldTitle}
             </Typography>
           )}
@@ -61,9 +60,11 @@ const FileInputController = <T extends FieldValues>({
           />
           {existingFileName && (
             <Typography
-              color="text.secondary"
-              sx={{ fontSize: "12px", mt: "4px" }}
-            >
+              sx={{
+                color: "text.secondary",
+                fontSize: "12px",
+                mt: "4px"
+              }}>
               Selected file: {existingFileName}
             </Typography>
           )}

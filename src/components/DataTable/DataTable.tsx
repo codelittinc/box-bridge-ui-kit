@@ -81,7 +81,9 @@ const DataTable = <T extends Record<string, unknown>>({
     }
 
     return (
-      <Typography color="text.secondary" variant="body2">
+      <Typography variant="body2" sx={{
+        color: "text.secondary"
+      }}>
         {String(row[column.name as keyof T])}
       </Typography>
     );

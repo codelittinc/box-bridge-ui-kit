@@ -39,14 +39,13 @@ const RadioGroupController = <T extends FieldValues>({
       >
         {fieldTitle && (
           <Typography
-            color="text.secondary"
             sx={{
+              color: "text.secondary",
               fontSize: "14px",
               fontWeight: 700,
               marginBottom: "8px",
-              marginTop: "4px",
-            }}
-          >
+              marginTop: "4px"
+            }}>
             {fieldTitle}
           </Typography>
         )}

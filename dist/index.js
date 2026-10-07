@@ -497,8 +497,8 @@ var W = {
 		className: W["cell-content"],
 		children: e.render(t[e.name], t)
 	}) : /* @__PURE__ */ w(C, {
-		color: "text.secondary",
 		variant: "body2",
+		sx: { color: "text.secondary" },
 		children: String(t[e.name])
 	}), p = (e) => e === "end" ? "right" : e === "center" ? "center" : "left";
 	return /* @__PURE__ */ w(c, {
@@ -814,8 +814,8 @@ var Q = {
 		},
 		children: [
 			r && /* @__PURE__ */ w(C, {
-				color: "text.secondary",
 				sx: {
+					color: "text.secondary",
 					fontSize: "14px",
 					fontWeight: 700,
 					mb: "8px",
@@ -839,8 +839,8 @@ var Q = {
 				}
 			}),
 			a && /* @__PURE__ */ T(C, {
-				color: "text.secondary",
 				sx: {
+					color: "text.secondary",
 					fontSize: "12px",
 					mt: "4px"
 				},
@@ -868,8 +868,8 @@ var Q = {
 			width: "100%"
 		},
 		children: [n && /* @__PURE__ */ w(C, {
-			color: "text.secondary",
 			sx: {
+				color: "text.secondary",
 				fontSize: "14px",
 				fontWeight: 700,
 				marginBottom: "8px",
@@ -903,8 +903,8 @@ var Q = {
 			width: "100%"
 		},
 		children: [n && /* @__PURE__ */ w(C, {
-			color: "text.secondary",
 			sx: {
+				color: "text.secondary",
 				fontSize: "14px",
 				fontWeight: 700,
 				mb: "8px",
@@ -946,8 +946,8 @@ var Q = {
 			width: "100%"
 		},
 		children: [r && /* @__PURE__ */ w(C, {
-			color: "text.secondary",
 			sx: {
+				color: "text.secondary",
 				fontSize: "14px",
 				fontWeight: 700,
 				marginBottom: "8px",

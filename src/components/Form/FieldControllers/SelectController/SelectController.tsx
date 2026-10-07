@@ -38,14 +38,13 @@ const SelectController = <T extends FieldValues>({
         >
           {fieldTitle && (
             <Typography
-              color="text.secondary"
               sx={{
+                color: "text.secondary",
                 fontSize: "14px",
                 fontWeight: 700,
                 mb: "8px",
-                mt: "4px",
-              }}
-            >
+                mt: "4px"
+              }}>
               {fieldTitle}
             </Typography>
           )}
