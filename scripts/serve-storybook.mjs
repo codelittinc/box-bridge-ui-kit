@@ -1,7 +1,7 @@
 // Serves the static Storybook build (storybook-static/) on Heroku.
 import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import { extname, join, normalize, sep } from "node:path";
 import { promisify } from "node:util";
 import { brotliCompress, gzip, constants } from "node:zlib";
@@ -28,7 +28,7 @@ const compressible = /^(text\/|application\/json|image\/svg)/;
 const encoders = {
   br: (buf) =>
     promisify(brotliCompress)(buf, {
-      params: { [constants.BROTLI_PARAM_QUALITY]: 11 },
+      params: { [constants.BROTLI_PARAM_QUALITY]: 9 },
     }),
   gzip: (buf) => promisify(gzip)(buf, { level: 9 }),
 };
@@ -81,4 +81,19 @@ createServer(async (req, res) => {
   }
   res.writeHead(200, headers);
   createReadStream(file).pipe(res);
-}).listen(port, () => console.log(`Storybook listening on ${port}`));
+}).listen(port, () => {
+  console.log(`Storybook listening on ${port}`);
+  warmCache();
+});
+
+// Compress every text file up front so the first visitor doesn't pay for it.
+async function warmCache() {
+  const entries = await readdir(root, { recursive: true, withFileTypes: true });
+  for (const entry of entries) {
+    const contentType = types[extname(entry.name)];
+    if (!entry.isFile() || !compressible.test(contentType ?? "")) continue;
+    const file = join(entry.parentPath, entry.name);
+    await Promise.all(Object.keys(encoders).map((enc) => getCompressed(file, enc)));
+  }
+  console.log("Compression cache warmed");
+}
