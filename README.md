@@ -180,15 +180,14 @@ import { Button, ButtonCategory, ButtonHeight } from "@codelittinc/box-bridge-ui
 import { DataTable } from "@codelittinc/box-bridge-ui-kit";
 
 const columns = [
-  { key: "name", header: "Name" },
-  { key: "email", header: "Email" },
-  { key: "role", header: "Role", render: (item) => <strong>{item.role}</strong> },
+  { name: "name", header: "Name" },
+  { name: "email", header: "Email" },
+  { name: "role", header: "Role", render: (_value, user) => <strong>{user.role}</strong> },
 ];
 
 <DataTable
-  data={users}
   columns={columns}
-  pagination={{ pageCount: 10, onPageChange: (page) => fetchPage(page) }}
+  pagination={{ entries: users, totalCount: users.length }}
 />
 ```
 
