@@ -41,6 +41,16 @@ export type { IconButtonProps } from "./components/IconButton";
 export { InputAdornment } from "./components/InputAdornment";
 export type { InputAdornmentProps } from "./components/InputAdornment";
 
+export { Kbd, KbdShortcut } from "./components/Kbd";
+export type {
+  KbdProps,
+  KbdSize,
+  KbdTone,
+  KbdShortcutProps,
+  KbdCombo,
+  KbdKey,
+} from "./components/Kbd";
+
 export { Link } from "./components/Link";
 export type { LinkProps } from "./components/Link";
 
