@@ -1,2 +1,2 @@
 export { default as DataTable } from './DataTable';
-export type { DataTableProps, ColumnConfiguration, ItemsPagination, } from './DataTable';
+export type { DataTableProps, DataTableRowProps, DataTableRowState, ColumnConfiguration, ItemsPagination, } from './DataTable';

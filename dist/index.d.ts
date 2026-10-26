@@ -12,7 +12,7 @@ export type { ButtonProps } from './components/Button';
 export { Checkbox } from './components/Checkbox';
 export type { CheckboxProps } from './components/Checkbox';
 export { DataTable } from './components/DataTable';
-export type { DataTableProps, ColumnConfiguration, ItemsPagination } from './components/DataTable';
+export type { DataTableProps, DataTableRowProps, DataTableRowState, ColumnConfiguration, ItemsPagination, } from './components/DataTable';
 export { Drawer } from './components/Drawer';
 export type { DrawerProps } from './components/Drawer';
 export { EmptyContent } from './components/EmptyContent';
