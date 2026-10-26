@@ -11,6 +11,7 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import ReactPaginateImport from "react-paginate";
 import { LoadingContent } from "../LoadingContent";
 import { EmptyContent } from "../EmptyContent";
@@ -29,6 +30,11 @@ export type ItemsPagination<T> = {
   totalCount: number;
   limit?: number;
 };
+
+const compose =
+  <E,>(...handlers: (((event: E) => void) | undefined)[]) =>
+  (event: E) =>
+    handlers.forEach((handler) => handler?.(event));
 
 export type ColumnConfiguration<T> = {
   header: string;
@@ -94,20 +100,36 @@ const DataTable = <T extends Record<string, unknown>>({
   title,
 }: DataTableProps<T>) => {
   const tableRef = useRef<HTMLTableElement>(null);
+  const previousActiveRowIndexRef = useRef(activeRowIndex);
+  // The row whose focus already reported this pointer interaction, so the
+  // click that follows it does not report the same row again.
+  const reportedOnFocusRef = useRef<number | null>(null);
   const entries = pagination?.entries || [];
   const pageCount = pagination?.limit
     ? Math.ceil(pagination.totalCount / pagination.limit)
     : 1;
   const hasRovingFocus = activeRowIndex !== undefined;
-  const tableName = title ?? ariaLabel;
+  const tableName = ariaLabel ?? title;
+  // The active row is the Tab stop; with none, or one past the end of this
+  // page, the first row is.
+  const tabStopIndex =
+    activeRowIndex != null && activeRowIndex >= 0 && activeRowIndex < entries.length
+      ? activeRowIndex
+      : 0;
   const activeRow = activeRowIndex == null ? undefined : entries[activeRowIndex];
   const activeRowId =
     activeRow && activeRowIndex != null ? getRowId?.(activeRow, activeRowIndex) : undefined;
 
-  // Move DOM focus with the active row, but never take it from a field, an
-  // open menu or a control inside the active row itself.
+  // Move DOM focus with the active row when focus is already in the table, or
+  // when nothing has focus and the app moved the active row (e.g. `j` pressed
+  // on the page). Mounting, loading and refetches that only change the row id
+  // never take focus or scroll; neither does anything while a field, a menu or
+  // a control inside the active row has focus.
   useLayoutEffect(() => {
-    if (activeRowIndex == null || isLoading) return;
+    const indexChanged = previousActiveRowIndexRef.current !== activeRowIndex;
+    if (isLoading) return;
+    previousActiveRowIndexRef.current = activeRowIndex;
+    if (activeRowIndex == null) return;
     const table = tableRef.current;
     const row = table?.tBodies[0]?.rows[activeRowIndex];
     if (!table || !row) return;
@@ -115,7 +137,7 @@ const DataTable = <T extends Record<string, unknown>>({
     const focused = document.activeElement;
     const focusIsFree = !focused || focused === document.body;
     const focusIsInAnotherRow = !!focused && table.contains(focused) && !row.contains(focused);
-    if (!focusIsFree && !focusIsInAnotherRow) return;
+    if (!focusIsInAnotherRow && !(focusIsFree && indexChanged)) return;
 
     row.focus({ preventScroll: true });
     row.scrollIntoView({ block: "nearest" });
@@ -126,7 +148,7 @@ const DataTable = <T extends Record<string, unknown>>({
   const pageStatus = pageStatusLabel !== undefined && (
     <Box
       aria-live="polite"
-      className={styles["visually-hidden"]}
+      sx={visuallyHidden}
       data-testid="data-table-page-status"
     >
       {pageStatusLabel}
@@ -190,7 +212,7 @@ const DataTable = <T extends Record<string, unknown>>({
             role="region"
             aria-label={tableName ? `${tableName} table` : "Data table"}
           >
-            <Table ref={tableRef} aria-label={tableName} size="medium">
+            <Table ref={tableRef} aria-label={tableName ?? "data table"} size="medium">
               <TableHead>
                 <TableRow>
                   {columns.map((column, index) => (
@@ -218,9 +240,12 @@ const DataTable = <T extends Record<string, unknown>>({
                     className: rowClassName,
                     onClick: onRowClick,
                     onFocus: onRowFocus,
+                    onMouseLeave: onRowMouseLeave,
+                    onMouseOver: onRowMouseOver,
+                    onPointerDown: onRowPointerDown,
                     ...rowProps
                   } = getRowProps?.(row, rowIndex, { isActive, isSelected }) ?? {};
-                  const isTabStop = isActive || (activeRowIndex == null && rowIndex === 0);
+                  const isTabStop = rowIndex === tabStopIndex;
 
                   const columnStatus = (name: string, rowData: T) => {
                     if (name === "status") {
@@ -237,18 +262,21 @@ const DataTable = <T extends Record<string, unknown>>({
                       key={rowId ?? rowIndex}
                       tabIndex={hasRovingFocus ? (isTabStop ? 0 : -1) : undefined}
                       aria-current={isActive ? "true" : undefined}
-                      onClick={(event) => {
-                        onRowClick?.(event);
+                      onPointerDown={compose(onRowPointerDown, () => {
+                        reportedOnFocusRef.current = null;
+                      })}
+                      onFocus={compose(onRowFocus, (event) => {
+                        if (event.target !== event.currentTarget) return;
+                        reportedOnFocusRef.current = rowIndex;
                         onActiveRowChange?.(rowIndex);
-                      }}
-                      onFocus={(event) => {
-                        onRowFocus?.(event);
-                        if (event.target === event.currentTarget) {
-                          onActiveRowChange?.(rowIndex);
-                        }
-                      }}
-                      onMouseOver={() => onRowHover?.(row)}
-                      onMouseLeave={() => onRowHover?.(undefined)}
+                      })}
+                      onClick={compose(onRowClick, () => {
+                        const alreadyReported = reportedOnFocusRef.current === rowIndex;
+                        reportedOnFocusRef.current = null;
+                        if (!alreadyReported) onActiveRowChange?.(rowIndex);
+                      })}
+                      onMouseOver={compose(onRowMouseOver, () => onRowHover?.(row))}
+                      onMouseLeave={compose(onRowMouseLeave, () => onRowHover?.(undefined))}
                       className={classNames(styles["table-row"], rowClassName, {
                         [styles["table-row-selected"]]: isSelected,
                         [styles["table-row-current"]]: isActive,
