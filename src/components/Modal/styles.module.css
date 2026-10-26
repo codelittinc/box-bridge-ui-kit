@@ -3,7 +3,6 @@
 }
 
 .modal-title {
-  color: #000000;
   font-family: "Inter", sans-serif;
   font-size: 0.87rem;
   font-weight: 600;
@@ -13,11 +12,14 @@
 }
 
 .modal-content {
-  color: #000000;
   font-family: "Inter", sans-serif;
   font-size: 0.87rem;
   font-weight: 400;
   line-height: 1.06rem;
+}
+
+.modal-actions[class*="MuiDialogActions-root"] {
+  padding: 1rem 24px 0;
 }
 
 .modal-title,
@@ -32,7 +34,8 @@
   }
 
   .modal > [class*="MuiDialogTitle-root"],
-  .modal > [class*="MuiDialogContent-root"] {
+  .modal > [class*="MuiDialogContent-root"],
+  .modal > [class*="MuiDialogActions-root"] {
     padding-inline: 0;
   }
 }

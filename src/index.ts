@@ -21,7 +21,13 @@ export { Checkbox } from "./components/Checkbox";
 export type { CheckboxProps } from "./components/Checkbox";
 
 export { DataTable } from "./components/DataTable";
-export type { DataTableProps, ColumnConfiguration, ItemsPagination } from "./components/DataTable";
+export type {
+  DataTableProps,
+  DataTableRowProps,
+  DataTableRowState,
+  ColumnConfiguration,
+  ItemsPagination,
+} from "./components/DataTable";
 
 export { Drawer } from "./components/Drawer";
 export type { DrawerProps } from "./components/Drawer";
@@ -40,6 +46,16 @@ export type { IconButtonProps } from "./components/IconButton";
 
 export { InputAdornment } from "./components/InputAdornment";
 export type { InputAdornmentProps } from "./components/InputAdornment";
+
+export { Kbd, KbdShortcut } from "./components/Kbd";
+export type {
+  KbdProps,
+  KbdSize,
+  KbdTone,
+  KbdShortcutProps,
+  KbdCombo,
+  KbdKey,
+} from "./components/Kbd";
 
 export { Link } from "./components/Link";
 export type { LinkProps } from "./components/Link";

@@ -21,11 +21,60 @@
   padding: 24px;
 }
 
-.table-row-active {
+.table-row {
   &[class*="MuiTableRow-root"] {
-    background-color: color-mix(in srgb, var(--primary-main) 20%, transparent);
+    scroll-margin-bottom: var(--data-table-scroll-margin-bottom, 0);
+    transition: background-color 120ms;
+
+    &:hover {
+      background-color: var(--gray-3);
+    }
   }
 }
+
+// Must match SELECTED_TINT in theme/focusRing.ts, which checks the focus ring
+// against this colour.
+.table-row-selected {
+  &[class*="MuiTableRow-root"],
+  &[class*="MuiTableRow-root"]:hover {
+    background-color: color-mix(in srgb, var(--primary-main) 12%, var(--gray-6));
+  }
+}
+
+// An inset ring drawn on the cells, because outline on <tr> is not painted
+// consistently across browsers. It replaces the browser focus outline.
+.table-row-current {
+  $ring: var(--focus-ring);
+
+  &[class*="MuiTableRow-root"] {
+    outline: none;
+  }
+
+  > [class*="MuiTableCell-root"] {
+    box-shadow:
+      inset 0 2px 0 0 $ring,
+      inset 0 -2px 0 0 $ring;
+
+    &:first-child {
+      box-shadow:
+        inset 2px 0 0 0 $ring,
+        inset 0 2px 0 0 $ring,
+        inset 0 -2px 0 0 $ring;
+    }
+
+    &:last-child {
+      box-shadow:
+        inset -2px 0 0 0 $ring,
+        inset 0 2px 0 0 $ring,
+        inset 0 -2px 0 0 $ring;
+    }
+
+    &:only-child {
+      box-shadow: inset 0 0 0 2px $ring;
+    }
+  }
+}
+
 
 .title {
   font-weight: 600;
