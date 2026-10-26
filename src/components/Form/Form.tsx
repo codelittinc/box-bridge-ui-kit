@@ -10,9 +10,10 @@ export type FormProps = {
   onCancelText?: string;
   onSave?: (e: React.FormEvent) => void;
   /**
-   * ⌘/Ctrl+Enter submits through the same path as the Save button. Ignored
-   * while `disabled` (pass it while a submit is pending) and during IME
-   * composition. Defaults to true.
+   * ⌘/Ctrl+Enter submits through the same path as the Save button. The key
+   * passes through untouched while `disabled` (pass it while a submit is
+   * pending), without `onSave`, on auto-repeat and during IME composition.
+   * Defaults to true.
    */
   submitOnModEnter?: boolean;
 };
@@ -29,16 +30,18 @@ function Form({
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    const form = formRef.current;
     const isModEnter = e.key === "Enter" && (e.metaKey || e.ctrlKey);
     const isComposing = e.nativeEvent.isComposing || e.keyCode === 229;
-    if (!submitOnModEnter || !isModEnter || isComposing) return;
+    if (!submitOnModEnter || !isModEnter || isComposing || e.repeat) return;
+    if (disabled || !onSave || !form) return;
+    // React bubbles events through portals, so a Modal or Drawer rendered
+    // inside this Form's children must not submit it.
+    if (!(e.target instanceof Node) || !form.contains(e.target)) return;
 
-    // Handled even when ignored, so the browser's implicit submit and app-level
-    // shortcuts never act on it.
     e.preventDefault();
     e.stopPropagation();
-    if (disabled || e.repeat) return;
-    formRef.current?.requestSubmit();
+    form.requestSubmit();
   };
 
   const handleSubmit = (e: React.FormEvent) => {

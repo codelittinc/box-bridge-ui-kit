@@ -7,9 +7,10 @@ export type FormProps = {
     onCancelText?: string;
     onSave?: (e: React.FormEvent) => void;
     /**
-     * ⌘/Ctrl+Enter submits through the same path as the Save button. Ignored
-     * while `disabled` (pass it while a submit is pending) and during IME
-     * composition. Defaults to true.
+     * ⌘/Ctrl+Enter submits through the same path as the Save button. The key
+     * passes through untouched while `disabled` (pass it while a submit is
+     * pending), without `onSave`, on auto-repeat and during IME composition.
+     * Defaults to true.
      */
     submitOnModEnter?: boolean;
 };

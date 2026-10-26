@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import Form from "./Form";
 import { TextField } from "../TextField";
+import { Modal } from "../Modal";
 
 const meta: Meta<typeof Form> = {
   title: "Components/Form/Form",
@@ -66,4 +67,28 @@ const ModEnterSubmitDemo = () => {
 
 export const ModEnterSubmit: Story = {
   render: () => <ModEnterSubmitDemo />,
+};
+
+// A Modal rendered inside a Form's children is portaled out of the <form>.
+// ⌘/Ctrl+Enter in its field must not submit the outer Form.
+const ModalInsideFormDemo = () => {
+  const [saves, setSaves] = useState(0);
+
+  return (
+    <Form onSave={() => setSaves((count) => count + 1)}>
+      <TextField label="Outer field" fullWidth />
+      <p data-testid="form-save-count">Saved {saves} times</p>
+      <Modal open onClose={() => {}} title="Nested dialog">
+        <TextField
+          label="Dialog field"
+          fullWidth
+          slotProps={{ htmlInput: { "data-testid": "nested-dialog-input" } }}
+        />
+      </Modal>
+    </Form>
+  );
+};
+
+export const ModalInsideForm: Story = {
+  render: () => <ModalInsideFormDemo />,
 };

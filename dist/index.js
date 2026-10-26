@@ -737,8 +737,8 @@ function lt({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, on
 			e.preventDefault(), a && a(e);
 		},
 		onKeyDown: (e) => {
-			let t = e.key === "Enter" && (e.metaKey || e.ctrlKey), r = e.nativeEvent.isComposing || e.keyCode === 229;
-			o && t && !r && (e.preventDefault(), e.stopPropagation(), !(n || e.repeat) && c.current?.requestSubmit());
+			let t = c.current, r = e.key === "Enter" && (e.metaKey || e.ctrlKey), i = e.nativeEvent.isComposing || e.keyCode === 229;
+			o && r && !i && !e.repeat && !n && a && t && e.target instanceof Node && t.contains(e.target) && (e.preventDefault(), e.stopPropagation(), t.requestSubmit());
 		},
 		style: {
 			width: "100%",
