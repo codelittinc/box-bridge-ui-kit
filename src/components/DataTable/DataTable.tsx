@@ -8,6 +8,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableSortLabel,
   Typography,
   Paper,
 } from "@mui/material";
@@ -31,6 +32,10 @@ const compose =
 
 export type ColumnConfiguration<T> = {
   header: string;
+  /** The consumer sorts the full result set before paginating. */
+  onSort?: () => void;
+  /** Only the currently sorted column has a direction. */
+  sortDirection?: "asc" | "desc";
   icon?: React.ReactNode;
   justify?: "start" | "center" | "end";
   name: keyof T | string;
@@ -213,10 +218,27 @@ const DataTable = <T extends Record<string, unknown>>({
                       key={index}
                       align={getAlign(column.justify)}
                       className={styles["header-cell"]}
+                      sortDirection={column.onSort ? column.sortDirection ?? false : false}
                     >
                       <Box className={styles["header-item"]}>
-                        {column.header}
-                        {column.icon && column.icon}
+                        {column.onSort ? (
+                          <TableSortLabel
+                            component="button"
+                            type="button"
+                            active={!!column.sortDirection}
+                            direction={column.sortDirection ?? "asc"}
+                            onClick={column.onSort}
+                            className={styles["sort-button"]}
+                            data-testid={`data-table-sort-${String(column.name)}-button`}
+                          >
+                            {column.header}
+                          </TableSortLabel>
+                        ) : (
+                          <>
+                            {column.header}
+                            {column.icon}
+                          </>
+                        )}
                       </Box>
                     </TableCell>
                   ))}
