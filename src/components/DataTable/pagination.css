@@ -10,11 +10,12 @@ ul.box-bridge-pagination {
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  cursor: pointer;
 }
 
-/* Pagination links */
-ul.box-bridge-pagination li a {
+/* Pagination buttons */
+ul.box-bridge-pagination li button {
+  cursor: pointer;
+  font: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -31,9 +32,9 @@ ul.box-bridge-pagination li a {
   font-size: 14px;
 }
 
-/* Disabled previous/next links */
-ul.box-bridge-pagination li.previous.disabled a,
-ul.box-bridge-pagination li.next.disabled a {
+/* Disabled previous/next buttons */
+ul.box-bridge-pagination li.previous.disabled button,
+ul.box-bridge-pagination li.next.disabled button {
   cursor: not-allowed;
   color: #ccc;
   border-color: #f0f0f0;
@@ -41,7 +42,7 @@ ul.box-bridge-pagination li.next.disabled a {
 }
 
 /* Selected/active page */
-ul.box-bridge-pagination li.selected a {
+ul.box-bridge-pagination li.selected button {
   background-color: var(--primary-main, #007bff);
   color: white;
   border-color: var(--primary-main, #007bff);
@@ -49,19 +50,25 @@ ul.box-bridge-pagination li.selected a {
 }
 
 /* Pagination hover effect */
-ul.box-bridge-pagination li a:hover:not([aria-disabled="true"]) {
+ul.box-bridge-pagination li button:hover:not(:disabled) {
   background-color: #f0f0f0;
   color: var(--primary-main, #007bff);
 }
 
 /* Next/Previous buttons */
-ul.box-bridge-pagination li.previous a,
-ul.box-bridge-pagination li.next a {
+ul.box-bridge-pagination li.previous button,
+ul.box-bridge-pagination li.next button {
   font-weight: bold;
 }
 
+/* Keyboard focus */
+ul.box-bridge-pagination li button:focus-visible {
+  outline: 2px solid var(--focus-ring, #000);
+  outline-offset: 2px;
+}
+
 /* Break (...) styling */
-ul.box-bridge-pagination li.break a {
+ul.box-bridge-pagination li.break span {
   pointer-events: none;
   cursor: default;
   color: #999;
@@ -75,7 +82,7 @@ ul.box-bridge-pagination li.break a {
     font-size: 12px;
   }
 
-  ul.box-bridge-pagination li a {
+  ul.box-bridge-pagination li button {
     padding: 8px 10px;
     margin: 0 3px;
   }

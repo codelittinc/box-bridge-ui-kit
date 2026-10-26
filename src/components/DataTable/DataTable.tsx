@@ -13,18 +13,11 @@ import {
   Paper,
 } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import ReactPaginateImport from "react-paginate";
+import DataTablePagination from "./DataTablePagination";
 import { LoadingContent } from "../LoadingContent";
 import { EmptyContent } from "../EmptyContent";
 import styles from "./styles.module.scss";
 import "./pagination.css";
-
-// react-paginate is CJS flagged with __esModule. Bundlers that follow Node's
-// ESM interop (Vite 8, Node SSR) hand back the module object as the default
-// import instead of the component, so unwrap it.
-const ReactPaginate =
-  (ReactPaginateImport as unknown as { default?: typeof ReactPaginateImport })
-    .default ?? ReactPaginateImport;
 
 export type ItemsPagination<T> = {
   entries: T[];
@@ -327,17 +320,10 @@ const DataTable = <T extends Record<string, unknown>>({
             </Table>
           </TableContainer>
           {pageCount > 1 && (
-            <ReactPaginate
-              containerClassName="box-bridge-pagination"
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
-              breakLabel="..."
-              nextLabel="next >"
+            <DataTablePagination
               onPageChange={onPageChange}
-              forcePage={selectedPage}
-              disableInitialCallback={true}
+              selectedPage={selectedPage}
               pageCount={pageCount}
-              previousLabel="< previous"
             />
           )}
         </Box>
