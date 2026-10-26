@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React from "react";
 import {
   Box,
   Dialog,
@@ -6,6 +6,8 @@ import {
   DialogContent,
   DialogActions,
   PaperProps,
+  SxProps,
+  Theme,
 } from "@mui/material";
 import styles from "./styles.module.css";
 
@@ -21,6 +23,13 @@ export type ModalProps = {
   "data-testid"?: string;
 };
 
+// The surface and the fields inside it follow the MUI palette, so the text
+// does too. Light palettes keep the kit's black text.
+const textColor: SxProps<Theme> = {
+  color: (theme) =>
+    theme.palette.mode === "dark" ? theme.palette.text.primary : theme.palette.common.black,
+};
+
 function Modal({
   open,
   onClose,
@@ -30,7 +39,6 @@ function Modal({
   actions,
   "data-testid": dataTestId,
 }: ModalProps) {
-  const titleId = useId();
   const paperProps: PaperProps & { "data-testid"?: string } = {
     sx: {
       maxWidth,
@@ -45,17 +53,14 @@ function Modal({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      aria-labelledby={titleId}
-      slotProps={{ paper: paperProps }}
-    >
-      <DialogTitle id={titleId} className={styles["modal-title"]}>
+    <Dialog open={open} onClose={onClose} slotProps={{ paper: paperProps }}>
+      <DialogTitle className={styles["modal-title"]} sx={textColor}>
         {title}
       </DialogTitle>
       <DialogContent>
-        <Box className={styles["modal-content"]}>{children}</Box>
+        <Box className={styles["modal-content"]} sx={textColor}>
+          {children}
+        </Box>
       </DialogContent>
       {actions && <DialogActions className={styles["modal-actions"]}>{actions}</DialogActions>}
     </Dialog>

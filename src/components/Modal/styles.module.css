@@ -2,12 +2,7 @@
   padding: 2rem;
 }
 
-.modal[class*="MuiPaper-root"] {
-  background-color: var(--common-white);
-}
-
 .modal-title {
-  color: var(--common-black);
   font-family: "Inter", sans-serif;
   font-size: 0.87rem;
   font-weight: 600;
@@ -17,7 +12,6 @@
 }
 
 .modal-content {
-  color: var(--common-black);
   font-family: "Inter", sans-serif;
   font-size: 0.87rem;
   font-weight: 400;
