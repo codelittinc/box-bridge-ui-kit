@@ -729,10 +729,16 @@ var K = {
 });
 //#endregion
 //#region src/components/Form/Form.tsx
-function lt({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, onCancelText: i, onSave: a }) {
+function lt({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, onCancelText: i, onSave: a, submitOnModEnter: s = !0 }) {
+	let c = o(null);
 	return /* @__PURE__ */ N("form", {
+		ref: c,
 		onSubmit: (e) => {
 			e.preventDefault(), a && a(e);
+		},
+		onKeyDown: (e) => {
+			let t = e.key === "Enter" && (e.metaKey || e.ctrlKey), r = e.nativeEvent.isComposing || e.keyCode === 229;
+			s && t && !r && (e.preventDefault(), e.stopPropagation(), !(n || e.repeat) && c.current?.requestSubmit());
 		},
 		style: {
 			width: "100%",

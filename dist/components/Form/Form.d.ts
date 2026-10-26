@@ -6,6 +6,12 @@ export type FormProps = {
     onCancel?: () => void;
     onCancelText?: string;
     onSave?: (e: React.FormEvent) => void;
+    /**
+     * ⌘/Ctrl+Enter submits through the same path as the Save button. Ignored
+     * while `disabled` (pass it while a submit is pending) and during IME
+     * composition. Defaults to true.
+     */
+    submitOnModEnter?: boolean;
 };
-declare function Form({ children, customSaveButtonText, disabled, onCancel, onCancelText, onSave, }: FormProps): React.ReactElement;
+declare function Form({ children, customSaveButtonText, disabled, onCancel, onCancelText, onSave, submitOnModEnter, }: FormProps): React.ReactElement;
 export default Form;
