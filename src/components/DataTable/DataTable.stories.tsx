@@ -167,3 +167,36 @@ export const ActiveAndSelectedRows: Story = {
     selectedRows: ["2", "3"],
   },
 };
+
+// Sorting is controlled so it includes records on every page.
+const SortingDemo = () => {
+  const [page, setPage] = useState(0);
+  const [sort, setSort] = useState<{ by: keyof SampleRow; direction: "asc" | "desc" }>({
+    by: "name", direction: "asc",
+  });
+  const sorted = [...sampleData].sort((a, b) =>
+    a[sort.by].localeCompare(b[sort.by]) * (sort.direction === "asc" ? 1 : -1)
+  );
+  return (
+    <DataTable
+      title="Sortable users"
+      columns={(["name", "email", "status"] as const).map((name) => ({
+        header: name,
+        name,
+        sortDirection: sort.by === name ? sort.direction : undefined,
+        onSort: () => {
+          setSort((current) => ({
+            by: name,
+            direction: current.by === name && current.direction === "asc" ? "desc" : "asc",
+          }));
+          setPage(0);
+        },
+      }))}
+      pagination={{ entries: sorted.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE), totalCount: sorted.length, limit: PAGE_SIZE }}
+      selectedPage={page}
+      onPageChange={({ selected }) => setPage(selected)}
+    />
+  );
+};
+
+export const WithSorting: Story = { render: () => <SortingDemo /> };

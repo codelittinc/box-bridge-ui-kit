@@ -83,7 +83,6 @@
 .header-item {
   align-items: center;
   color: var(--gray-1);
-  cursor: pointer;
   display: inline-flex;
   font-size: 12px;
   font-weight: 400;
@@ -157,5 +156,16 @@
   .table-container th,
   .table-container td {
     padding: 12px 8px;
+  }
+}
+
+.sort-button {
+  font: inherit;
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring, var(--primary-main));
+    outline-offset: 4px;
+    border-radius: 2px;
   }
 }
