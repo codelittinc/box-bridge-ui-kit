@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { visuallyHidden } from "@mui/utils";
 import styles from "./styles.module.scss";
 
 export type KbdSize = "small" | "medium";
@@ -40,7 +41,7 @@ function Kbd({
       <KbdCap size={size} tone={tone}>
         {children}
       </KbdCap>
-      <span className={styles["visually-hidden"]}>{label}</span>
+      <span style={visuallyHidden}>{label}</span>
     </span>
   );
 }

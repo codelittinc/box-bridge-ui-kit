@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { visuallyHidden } from "@mui/utils";
 import Typography from "../Typography/Typography";
 import { KbdCap, KbdSize, KbdTone } from "./Kbd";
 import styles from "./styles.module.scss";
@@ -88,7 +89,7 @@ function KbdShortcut({
           </React.Fragment>
         ))}
       </span>
-      <span className={styles["visually-hidden"]}>{label}</span>
+      <span style={visuallyHidden}>{label}</span>
     </span>
   );
 }
