@@ -988,7 +988,7 @@ var xt = {
 };
 //#endregion
 //#region src/components/Toast/Toast.tsx
-function Tt({ open: e, title: t, message: n, severity: r = "info", onClose: i, autoHideDuration: a = 3e3 }) {
+function Tt({ open: e, title: t, message: n, severity: r = "info", onClose: i, autoHideDuration: a = 3e3, "data-testid": o }) {
 	return /* @__PURE__ */ P(le, {
 		open: e,
 		autoHideDuration: a,
@@ -1001,6 +1001,7 @@ function Tt({ open: e, title: t, message: n, severity: r = "info", onClose: i, a
 		children: /* @__PURE__ */ F(l, {
 			severity: r,
 			className: $.ToastRoot,
+			"data-testid": o,
 			action: /* @__PURE__ */ P(E, {
 				size: "small",
 				"aria-label": "close",

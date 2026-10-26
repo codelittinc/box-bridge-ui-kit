@@ -10,6 +10,8 @@ export type ToastProps = {
   severity?: "info" | "success" | "warning" | "error";
   onClose: () => void;
   autoHideDuration?: number;
+  /** Set on the alert surface (the element with role="alert"). */
+  "data-testid"?: string;
 };
 
 function Toast({
@@ -19,6 +21,7 @@ function Toast({
   severity = "info",
   onClose,
   autoHideDuration = 3000,
+  "data-testid": dataTestId,
 }: ToastProps): React.ReactElement {
   return (
     <Snackbar
@@ -31,6 +34,7 @@ function Toast({
       <Alert
         severity={severity}
         className={styles.ToastRoot}
+        data-testid={dataTestId}
         action={
           <IconButton
             size="small"
