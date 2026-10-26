@@ -192,6 +192,8 @@ const columns = [
 />
 ```
 
+Sortable columns accept `onSort` and a controlled `sortDirection` (`"asc"` or `"desc"` on the active column). The header renders a native button and exposes its direction through `aria-sort` on the column header. The consumer owns ordering: sort the complete result set before slicing a page, then reset the selected page when the sort changes. Columns without `onSort` remain static headers. See the `WithSorting` story for a working paginated example.
+
 ### Form with Field Controllers
 
 ```tsx
