@@ -1,6 +1,6 @@
 "use client";
 import e, { createElement as t, forwardRef as n, useId as r, useImperativeHandle as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
-import { Alert as l, AlertTitle as u, Box as d, Button as f, Card as p, Checkbox as m, Chip as h, CircularProgress as g, CssBaseline as ee, Dialog as _, DialogActions as v, DialogContent as y, DialogContentText as b, DialogTitle as x, Divider as S, Drawer as C, FormControl as w, FormControlLabel as T, FormHelperText as E, IconButton as D, InputAdornment as O, InputLabel as te, Link as ne, Menu as re, MenuItem as ie, Paper as ae, Radio as oe, RadioGroup as se, Select as ce, Snackbar as le, Stack as k, Table as ue, TableBody as de, TableCell as fe, TableContainer as pe, TableHead as me, TableRow as he, TextField as ge, ThemeProvider as _e, Tooltip as ve, Typography as A, createTheme as ye } from "@mui/material";
+import { Alert as l, AlertTitle as u, Box as d, Button as f, Card as p, Checkbox as m, Chip as h, CircularProgress as g, CssBaseline as ee, Dialog as _, DialogActions as v, DialogContent as y, DialogContentText as b, DialogTitle as x, Divider as S, Drawer as C, FormControl as w, FormControlLabel as te, FormHelperText as T, IconButton as E, InputAdornment as D, InputLabel as ne, Link as O, Menu as re, MenuItem as ie, Paper as ae, Radio as oe, RadioGroup as se, Select as ce, Snackbar as le, Stack as k, Table as ue, TableBody as de, TableCell as fe, TableContainer as pe, TableHead as me, TableRow as he, TextField as ge, ThemeProvider as _e, Tooltip as ve, Typography as A, createTheme as ye } from "@mui/material";
 import { decomposeColor as j, getContrastRatio as be } from "@mui/material/styles";
 import { Fragment as M, jsx as N, jsxs as P } from "react/jsx-runtime";
 import xe from "@mui/icons-material/ExpandMore";
@@ -8,7 +8,7 @@ import { Combobox as Se, ComboboxItem as Ce, ComboboxList as we, ComboboxProvide
 import { matchSorter as Ee } from "match-sorter";
 import F from "classnames";
 import { visuallyHidden as De } from "@mui/utils";
-import Oe from "react-paginate";
+import Oe from "@mui/material/usePagination";
 import ke, { default as Ae } from "@mui/icons-material/Close";
 import je from "@mui/icons-material/Add";
 import Me from "@mui/icons-material/Clear";
@@ -560,13 +560,46 @@ var nt = /* @__PURE__ */ function(e) {
 	});
 });
 lt.displayName = "ColorField";
-var ut = {
+//#endregion
+//#region src/components/DataTable/DataTablePagination.tsx
+var ut = ({ pageCount: e, selectedPage: t, onPageChange: n }) => {
+	let { items: r } = Oe({
+		count: e,
+		page: t + 1,
+		onChange: (e, t) => n?.({ selected: t - 1 })
+	});
+	return /* @__PURE__ */ N("nav", {
+		"aria-label": "Pagination",
+		children: /* @__PURE__ */ N("ul", {
+			className: "box-bridge-pagination",
+			role: "list",
+			children: r.map(({ type: e, page: t, selected: n, ...r }) => {
+				let i = e === "start-ellipsis" || e === "end-ellipsis", a = e === "previous" ? "Previous page" : e === "next" ? "Next page" : `Page ${t}`;
+				return /* @__PURE__ */ N("li", {
+					className: F(e, {
+						selected: n,
+						disabled: r.disabled,
+						break: i
+					}),
+					"aria-hidden": i ? !0 : void 0,
+					children: i ? /* @__PURE__ */ N("span", { children: "…" }) : /* @__PURE__ */ N("button", {
+						...r,
+						type: "button",
+						"aria-label": a,
+						"aria-current": n ? "page" : void 0,
+						children: e === "previous" ? "< previous" : e === "next" ? "next >" : t
+					})
+				}, `${e}-${t}`);
+			})
+		})
+	});
+}, dt = {
 	skeleton: "_skeleton_1ioze_1",
 	pulse: "_pulse_1ioze_1"
 };
 //#endregion
 //#region src/components/LoadingContent/LoadingContent.tsx
-function dt() {
+function ft() {
 	return /* @__PURE__ */ N(k, {
 		direction: "column",
 		spacing: 2,
@@ -582,7 +615,7 @@ function dt() {
 			,
 			,
 		]].map((e, t) => /* @__PURE__ */ N(d, {
-			className: ut.skeleton,
+			className: dt.skeleton,
 			sx: {
 				height: "24px",
 				bgcolor: "grey.300",
@@ -593,7 +626,7 @@ function dt() {
 }
 //#endregion
 //#region src/components/EmptyContent/EmptyContent.tsx
-function ft({ message: e, isVisible: t, style: n }) {
+function pt({ message: e, isVisible: t, style: n }) {
 	return t ? /* @__PURE__ */ N(d, {
 		sx: {
 			textAlign: "center",
@@ -627,8 +660,8 @@ var q = {
 	"body-item-pending": "_body-item-pending_1m9xt_68",
 	"header-cell": "_header-cell_1m9xt_89",
 	"cell-content": "_cell-content_1m9xt_97"
-}, pt = Oe.default ?? Oe, J = (...e) => (t) => e.forEach((e) => e?.(t)), mt = ({ activeRowIndex: e, "aria-label": n, columns: r, emptyTableMessage: i = "No data available", getRowId: o, getRowProps: c, isLoading: l = !1, onActiveRowChange: u, onPageChange: f, onRowHover: p, pageStatusLabel: m, pagination: h, selectedPage: g = 0, selectedRows: ee, title: _ }) => {
-	let v = s(null), y = s(e), b = s(null), x = h?.entries || [], S = h?.limit ? Math.ceil(h.totalCount / h.limit) : 1, C = e !== void 0, w = n ?? _, T = e != null && e >= 0 && e < x.length ? e : 0, E = e == null ? void 0 : x[e], D = E && e != null ? o?.(E, e) : void 0;
+}, J = (...e) => (t) => e.forEach((e) => e?.(t)), mt = ({ activeRowIndex: e, "aria-label": n, columns: r, emptyTableMessage: i = "No data available", getRowId: o, getRowProps: c, isLoading: l = !1, onActiveRowChange: u, onPageChange: f, onRowHover: p, pageStatusLabel: m, pagination: h, selectedPage: g = 0, selectedRows: ee, title: _ }) => {
+	let v = s(null), y = s(e), b = s(null), x = h?.entries || [], S = h?.limit ? Math.ceil(h.totalCount / h.limit) : 1, C = e !== void 0, w = n ?? _, te = e != null && e >= 0 && e < x.length ? e : 0, T = e == null ? void 0 : x[e], E = T && e != null ? o?.(T, e) : void 0;
 	a(() => {
 		let t = y.current !== e;
 		if (l || (y.current = e, e == null)) return;
@@ -638,29 +671,29 @@ var q = {
 		(i && n.contains(i) && !r.contains(i) || a && t) && (r.focus({ preventScroll: !0 }), r.scrollIntoView({ block: "nearest" }));
 	}, [
 		e,
-		D,
+		E,
 		l
 	]);
-	let O = m !== void 0 && /* @__PURE__ */ N(d, {
+	let D = m !== void 0 && /* @__PURE__ */ N(d, {
 		"aria-live": "polite",
 		sx: De,
 		"data-testid": "data-table-page-status",
 		children: m
 	});
-	if (l) return /* @__PURE__ */ P(M, { children: [O, /* @__PURE__ */ N(dt, {})] });
-	if (h?.totalCount === 0) return /* @__PURE__ */ P(M, { children: [O, /* @__PURE__ */ N(ft, {
+	if (l) return /* @__PURE__ */ P(M, { children: [D, /* @__PURE__ */ N(ft, {})] });
+	if (h?.totalCount === 0) return /* @__PURE__ */ P(M, { children: [D, /* @__PURE__ */ N(pt, {
 		isVisible: !0,
 		message: i
 	})] });
-	let te = (e, t) => e.render ? /* @__PURE__ */ N("div", {
+	let ne = (e, t) => e.render ? /* @__PURE__ */ N("div", {
 		className: q["cell-content"],
 		children: e.render(t[e.name], t)
 	}) : /* @__PURE__ */ N(A, {
 		variant: "body2",
 		sx: { color: "text.secondary" },
 		children: String(t[e.name])
-	}), ne = (e) => e === "end" ? "right" : e === "center" ? "center" : "left";
-	return /* @__PURE__ */ P(M, { children: [O, /* @__PURE__ */ N(d, {
+	}), O = (e) => e === "end" ? "right" : e === "center" ? "center" : "left";
+	return /* @__PURE__ */ P(M, { children: [D, /* @__PURE__ */ N(d, {
 		className: q.container,
 		children: /* @__PURE__ */ P(d, {
 			className: q.table,
@@ -681,7 +714,7 @@ var q = {
 						"aria-label": w ?? "data table",
 						size: "medium",
 						children: [/* @__PURE__ */ N(me, { children: /* @__PURE__ */ N(he, { children: r.map((e, t) => /* @__PURE__ */ N(fe, {
-							align: ne(e.justify),
+							align: O(e.justify),
 							className: q["header-cell"],
 							children: /* @__PURE__ */ P(d, {
 								className: q["header-item"],
@@ -691,7 +724,7 @@ var q = {
 							let a = o?.(n, i), s = !!ee?.includes(a ?? n.id), l = i === e, { className: f, onClick: m, onFocus: h, onMouseLeave: g, onMouseOver: _, onPointerDown: v, ...y } = c?.(n, i, {
 								isActive: l,
 								isSelected: s
-							}) ?? {}, x = i === T, S = (e, t) => e === "status" && t.status?.toLowerCase() || "default";
+							}) ?? {}, x = i === te, S = (e, t) => e === "status" && t.status?.toLowerCase() || "default";
 							return /* @__PURE__ */ t(he, {
 								...y,
 								key: a ?? i,
@@ -714,26 +747,19 @@ var q = {
 									[q["table-row-current"]]: l
 								})
 							}, r.map((e, t) => /* @__PURE__ */ N(fe, {
-								align: ne(e.justify),
+								align: O(e.justify),
 								children: /* @__PURE__ */ N(d, {
 									className: q[`body-item-${S(e.name, n)}`],
-									children: te(e, n)
+									children: ne(e, n)
 								})
 							}, t)));
 						}) })]
 					})
 				}),
-				S > 1 && /* @__PURE__ */ N(pt, {
-					containerClassName: "box-bridge-pagination",
-					pageRangeDisplayed: 2,
-					marginPagesDisplayed: 1,
-					breakLabel: "...",
-					nextLabel: "next >",
+				S > 1 && /* @__PURE__ */ N(ut, {
 					onPageChange: f,
-					forcePage: g,
-					disableInitialCallback: !0,
-					pageCount: S,
-					previousLabel: "< previous"
+					selectedPage: g,
+					pageCount: S
 				})
 			]
 		})
@@ -766,7 +792,7 @@ var q = {
 					variant: "h6",
 					className: Y.title,
 					children: t
-				}), /* @__PURE__ */ N(D, {
+				}), /* @__PURE__ */ N(E, {
 					size: "small",
 					"aria-label": "Close drawer",
 					onClick: n,
@@ -862,7 +888,7 @@ function gt({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, on
 }
 //#endregion
 //#region src/components/IconButton/IconButton.ts
-var _t = D, vt = O, X = {
+var _t = E, vt = D, X = {
 	kbd: "_kbd_1o8yl_1",
 	small: "_small_1o8yl_16",
 	medium: "_medium_1o8yl_23",
@@ -933,7 +959,7 @@ function St({ shortcuts: t, isMac: n, thenLabel: r, orLabel: i, size: a = "mediu
 }
 //#endregion
 //#region src/components/Link/Link.tsx
-var Ct = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ N(ne, {
+var Ct = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ N(O, {
 	...n,
 	sx: [{
 		fontSize: "12px",
@@ -1055,7 +1081,7 @@ function jt({ open: e, title: t, message: n, severity: r = "info", onClose: i, a
 			severity: r,
 			className: $.ToastRoot,
 			"data-testid": o,
-			action: /* @__PURE__ */ N(D, {
+			action: /* @__PURE__ */ N(E, {
 				size: "small",
 				"aria-label": "close",
 				color: "inherit",
@@ -1075,7 +1101,7 @@ function jt({ open: e, title: t, message: n, severity: r = "info", onClose: i, a
 }
 //#endregion
 //#region src/components/Tooltip/Tooltip.ts
-var Mt = ve, Nt = ge, Pt = _, Ft = x, It = y, Lt = b, Rt = v, zt = ie, Bt = S, Vt = l, Ht = w, Ut = T, Wt = te, Gt = ae, Kt = h, qt = p, Jt = oe, Yt = se, Xt = g, Zt = m, Qt = ce, $t = ({ name: e, control: t, required: n, options: r = [], withObjectValue: i = !0, ...a }) => /* @__PURE__ */ N(I, {
+var Mt = ve, Nt = ge, Pt = _, Ft = x, It = y, Lt = b, Rt = v, zt = ie, Bt = S, Vt = l, Ht = w, Ut = te, Wt = ne, Gt = ae, Kt = h, qt = p, Jt = oe, Yt = se, Xt = g, Zt = m, Qt = ce, $t = ({ name: e, control: t, required: n, options: r = [], withObjectValue: i = !0, ...a }) => /* @__PURE__ */ N(I, {
 	name: e,
 	control: t,
 	rules: { required: n && "This field is required" },
@@ -1177,7 +1203,7 @@ var Mt = ve, Nt = ge, Pt = _, Ft = x, It = y, Lt = b, Rt = v, zt = ie, Bt = S, V
 				onChange: (t) => {
 					e(t.target.value), i?.(t.target.value);
 				},
-				children: r.map((e) => /* @__PURE__ */ N(T, {
+				children: r.map((e) => /* @__PURE__ */ N(te, {
 					value: e.value,
 					control: /* @__PURE__ */ N(oe, {}),
 					label: e.label,
@@ -1211,7 +1237,7 @@ var Mt = ve, Nt = ge, Pt = _, Ft = x, It = y, Lt = b, Rt = v, zt = ie, Bt = S, V
 			fullWidth: !0,
 			error: !!i,
 			children: [
-				r && /* @__PURE__ */ N(te, { children: r }),
+				r && /* @__PURE__ */ N(ne, { children: r }),
 				/* @__PURE__ */ N(ce, {
 					value: t || "",
 					onChange: e,
@@ -1222,7 +1248,7 @@ var Mt = ve, Nt = ge, Pt = _, Ft = x, It = y, Lt = b, Rt = v, zt = ie, Bt = S, V
 						children: e.label
 					}, e.value))
 				}),
-				i && /* @__PURE__ */ N(E, {
+				i && /* @__PURE__ */ N(T, {
 					error: !0,
 					children: i.message
 				})
@@ -1297,4 +1323,4 @@ var Mt = ve, Nt = ge, Pt = _, Ft = x, It = y, Lt = b, Rt = v, zt = ie, Bt = S, V
 	})
 });
 //#endregion
-export { Ye as Accordion, je as AddIcon, Vt as Alert, V as Autocomplete, $t as AutocompleteController, $e as Box, qe as BoxBridgeThemeProvider, tt as Breadcrumb, G as Button, U as ButtonCategory, W as ButtonHeight, qt as Card, at as Checkbox, Kt as Chip, Xt as CircularProgress, Me as ClearIcon, ke as CloseIcon, lt as ColorField, mt as DataTable, Ne as DeleteIcon, Pe as DeleteOutlineIcon, Pt as Dialog, Rt as DialogActions, It as DialogContent, Lt as DialogContentText, Ft as DialogTitle, Bt as Divider, ht as Drawer, Fe as EditIcon, ft as EmptyContent, en as FileInputController, gt as Form, Ht as FormControl, Ut as FormControlLabel, rt as Icon, _t as IconButton, nt as IconKey, vt as InputAdornment, Wt as InputLabel, bt as Kbd, St as KbdShortcut, Ct as Link, dt as LoadingContent, Tt as Menu, Ie as MenuIcon, zt as MenuItem, Dt as Modal, Le as MoreHorizIcon, Zt as MuiCheckbox, Gt as Paper, Jt as Radio, kt as RadioButton, Yt as RadioGroup, tn as RadioGroupController, Re as SearchIcon, Qt as Select, nn as SelectController, ze as SendIcon, Be as SmartToyIcon, At as Spinner, ot as Stack, rn as TextAreaController, Nt as TextField, on as TextInputController, jt as Toast, Mt as Tooltip, K as Typography, R as deepMerge, L as defaultTheme, Je as themePresets };
+export { Ye as Accordion, je as AddIcon, Vt as Alert, V as Autocomplete, $t as AutocompleteController, $e as Box, qe as BoxBridgeThemeProvider, tt as Breadcrumb, G as Button, U as ButtonCategory, W as ButtonHeight, qt as Card, at as Checkbox, Kt as Chip, Xt as CircularProgress, Me as ClearIcon, ke as CloseIcon, lt as ColorField, mt as DataTable, Ne as DeleteIcon, Pe as DeleteOutlineIcon, Pt as Dialog, Rt as DialogActions, It as DialogContent, Lt as DialogContentText, Ft as DialogTitle, Bt as Divider, ht as Drawer, Fe as EditIcon, pt as EmptyContent, en as FileInputController, gt as Form, Ht as FormControl, Ut as FormControlLabel, rt as Icon, _t as IconButton, nt as IconKey, vt as InputAdornment, Wt as InputLabel, bt as Kbd, St as KbdShortcut, Ct as Link, ft as LoadingContent, Tt as Menu, Ie as MenuIcon, zt as MenuItem, Dt as Modal, Le as MoreHorizIcon, Zt as MuiCheckbox, Gt as Paper, Jt as Radio, kt as RadioButton, Yt as RadioGroup, tn as RadioGroupController, Re as SearchIcon, Qt as Select, nn as SelectController, ze as SendIcon, Be as SmartToyIcon, At as Spinner, ot as Stack, rn as TextAreaController, Nt as TextField, on as TextInputController, jt as Toast, Mt as Tooltip, K as Typography, R as deepMerge, L as defaultTheme, Je as themePresets };
