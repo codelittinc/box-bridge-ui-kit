@@ -31,6 +31,8 @@ const TextAreaController = <T extends FieldValues>({
           alignItems: "baseline",
           flexDirection: "column",
           width: "100%",
+          minWidth: 0,
+          overflowWrap: "anywhere",
         }}
       >
         {fieldTitle && (
@@ -55,6 +57,8 @@ const TextAreaController = <T extends FieldValues>({
           fullWidth
           sx={{
             width: "100%",
+            minWidth: 0,
+            overflowWrap: "anywhere",
             "& .MuiInputBase-root": {
               minHeight: "100px",
             },

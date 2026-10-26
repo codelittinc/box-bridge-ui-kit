@@ -35,6 +35,8 @@ const RadioGroupController = <T extends FieldValues>({
           alignItems: "flex-start",
           flexDirection: "column",
           width: "100%",
+          minWidth: 0,
+          overflowWrap: "anywhere",
         }}
       >
         {fieldTitle && (

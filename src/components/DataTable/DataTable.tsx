@@ -104,6 +104,9 @@ const DataTable = <T extends Record<string, unknown>>({
           component={Paper}
           elevation={0}
           className={styles["table-container"]}
+          tabIndex={0}
+          role="region"
+          aria-label={title ? `${title} table` : "Data table"}
         >
           <Table aria-label="data table" size="medium">
             <TableHead>
@@ -168,6 +171,9 @@ const DataTable = <T extends Record<string, unknown>>({
         </TableContainer>
         {pageCount > 1 && (
           <ReactPaginate
+            containerClassName="box-bridge-pagination"
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
             breakLabel="..."
             nextLabel="next >"
             onPageChange={onPageChange}

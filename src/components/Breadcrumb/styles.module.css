@@ -1,8 +1,11 @@
 .breadcrumb {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
-  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 .breadcrumb-item {
@@ -10,14 +13,15 @@
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  flex-shrink: 0;
+  min-width: 0;
+  max-width: 100%;
   font-family: 'Inter', sans-serif;
   font-size: 0.87rem;
   font-weight: 400;
   gap: 0.25rem;
   line-height: 1.06rem;
   padding-right: 0.56rem;
-  white-space: nowrap;
+  white-space: normal;
   width: fit-content;
 }
 

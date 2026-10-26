@@ -21,6 +21,27 @@ const defaultTheme = {
     },
   },
   components: {
+    MuiTypography: {
+      styleOverrides: { root: { overflowWrap: "anywhere", minWidth: 0 } },
+    },
+    MuiFormControl: {
+      styleOverrides: { root: { minWidth: 0, maxWidth: "100%" } },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: { minWidth: 0 },
+        label: { minWidth: 0, overflowWrap: "anywhere" },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: { root: { whiteSpace: "normal", overflowWrap: "anywhere" } },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: { minWidth: 0, maxWidth: "100%" },
+        input: { "@media (max-width: 599.95px)": { fontSize: "16px" } },
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: {
         ":root": {

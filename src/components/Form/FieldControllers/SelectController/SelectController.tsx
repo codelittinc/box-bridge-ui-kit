@@ -34,7 +34,7 @@ const SelectController = <T extends FieldValues>({
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <Stack
           direction="column"
-          sx={{ alignItems: "flex-start", width: "100%" }}
+          sx={{ alignItems: "flex-start", width: "100%", minWidth: 0, overflowWrap: "anywhere" }}
         >
           {fieldTitle && (
             <Typography

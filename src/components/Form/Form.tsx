@@ -27,11 +27,15 @@ function Form({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ width: "100%", minWidth: 0 }}>
       <Box>
-        <Box sx={{ width: "100%" }}>{children}</Box>
+        <Box sx={{ width: "100%", minWidth: 0 }}>{children}</Box>
         <Stack direction="row" sx={{ justifyContent: "flex-end", mt: "18px" }}>
-          <Stack direction="row" spacing={2}>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            sx={{ width: { xs: "100%", sm: "auto" }, "& .MuiButton-root": { width: { xs: "100%", sm: "auto" } } }}
+          >
             {onCancel ? (
               <Button
                 height={ButtonHeight.medium}

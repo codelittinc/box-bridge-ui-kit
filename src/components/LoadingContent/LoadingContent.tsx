@@ -7,7 +7,7 @@ export default function LoadingContent() {
     <Stack
       direction="column"
       spacing={2}
-      sx={{ maxWidth: "100%", width: "100%" }}
+      sx={{ maxWidth: "100%", width: "100%", minWidth: 0 }}
     >
       {[...Array(5)].map((_, index) => (
         <Box

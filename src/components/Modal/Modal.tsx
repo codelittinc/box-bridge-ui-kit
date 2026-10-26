@@ -19,7 +19,11 @@ function Modal({ open, onClose, children, title, maxWidth = "420px" }: ModalProp
         paper: {
           sx: {
             maxWidth,
-            width: "100%",
+            width: "calc(100% - 32px)",
+            m: "16px",
+            maxHeight: "calc(100dvh - 32px)",
+            boxSizing: "border-box",
+            minWidth: 0,
           },
           className: styles["modal"],
         },

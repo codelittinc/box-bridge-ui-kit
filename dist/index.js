@@ -31,21 +31,49 @@ var F = {
 			black: "#000000"
 		}
 	},
-	components: { MuiCssBaseline: { styleOverrides: { ":root": {
-		"--primary-main": "#016bb6",
-		"--primary-text": "white",
-		"--error-main": "#d32f2f",
-		"--success-main": "#2e7d32",
-		"--warning-main": "#ed6c02",
-		"--common-white": "#ffffff",
-		"--common-black": "#000000",
-		"--gray-1": "#505050",
-		"--gray-2": "#e8e8e8",
-		"--gray-3": "#f0f0f0",
-		"--gray-4": "#cacaca",
-		"--gray-5": "#eaeaea",
-		"--gray-6": "#f9f9f9"
-	} } } },
+	components: {
+		MuiTypography: { styleOverrides: { root: {
+			overflowWrap: "anywhere",
+			minWidth: 0
+		} } },
+		MuiFormControl: { styleOverrides: { root: {
+			minWidth: 0,
+			maxWidth: "100%"
+		} } },
+		MuiFormControlLabel: { styleOverrides: {
+			root: { minWidth: 0 },
+			label: {
+				minWidth: 0,
+				overflowWrap: "anywhere"
+			}
+		} },
+		MuiMenuItem: { styleOverrides: { root: {
+			whiteSpace: "normal",
+			overflowWrap: "anywhere"
+		} } },
+		MuiInputBase: { styleOverrides: {
+			root: {
+				minWidth: 0,
+				maxWidth: "100%"
+			},
+			input: { "@media (max-width: 599.95px)": { fontSize: "16px" } }
+		} },
+		MuiCssBaseline: { styleOverrides: { ":root": {
+			"--primary-main": "#016bb6",
+			"--primary-text": "white",
+			"--error-main": "#d32f2f",
+			"--success-main": "#2e7d32",
+			"--warning-main": "#ed6c02",
+			"--common-white": "#ffffff",
+			"--common-black": "#000000",
+			"--gray-1": "#505050",
+			"--gray-2": "#e8e8e8",
+			"--gray-3": "#f0f0f0",
+			"--gray-4": "#cacaca",
+			"--gray-5": "#eaeaea",
+			"--gray-6": "#f9f9f9"
+		} } }
+	},
 	typography: { fontFamily: "\"Inter\", sans-serif" }
 };
 //#endregion
@@ -215,11 +243,11 @@ var Ie = {
 		typography: { fontFamily: "\"Inter\", sans-serif" }
 	}
 }, L = {
-	accordionContainer: "_accordionContainer_wogrb_1",
-	accordionHeader: "_accordionHeader_wogrb_5",
-	accordionContent: "_accordionContent_wogrb_10",
-	chevronOpen: "_chevronOpen_wogrb_14",
-	chevronClosed: "_chevronClosed_wogrb_19"
+	accordionContainer: "_accordionContainer_1sy4c_1",
+	accordionHeader: "_accordionHeader_1sy4c_5",
+	accordionContent: "_accordionContent_1sy4c_10",
+	chevronOpen: "_chevronOpen_1sy4c_14",
+	chevronClosed: "_chevronClosed_1sy4c_19"
 }, Le = ({ title: t, children: n, defaultOpen: r = !0 }) => {
 	let [i, a] = e.useState(r);
 	return /* @__PURE__ */ j(c, {
@@ -301,15 +329,15 @@ var Be = ({ options: e, value: t, onChange: o, ref: s }) => {
 		selectedLabel: p
 	};
 }, R = {
-	wrapper: "_wrapper_13yt1_1",
-	label: "_label_13yt1_8",
-	"input-wrapper": "_input-wrapper_13yt1_14",
-	combobox: "_combobox_13yt1_21",
-	"toggle-button": "_toggle-button_13yt1_50",
-	listbox: "_listbox_13yt1_67",
-	item: "_item_13yt1_83",
-	"item-text": "_item-text_13yt1_118",
-	"item-indicator": "_item-indicator_13yt1_122"
+	wrapper: "_wrapper_3c5hj_1",
+	label: "_label_3c5hj_11",
+	"input-wrapper": "_input-wrapper_3c5hj_17",
+	combobox: "_combobox_3c5hj_24",
+	"toggle-button": "_toggle-button_3c5hj_55",
+	listbox: "_listbox_3c5hj_72",
+	item: "_item_3c5hj_91",
+	"item-text": "_item-text_3c5hj_130",
+	"item-indicator": "_item-indicator_3c5hj_134"
 }, z = t(({ value: e, onChange: t, options: n, placeholder: r, label: i }, a) => {
 	let { matches: o, open: s, setOpen: c, searchValue: l, setSearchValue: u, selectedLabel: d } = Be({
 		options: n,
@@ -364,8 +392,8 @@ z.displayName = "Autocomplete";
 //#endregion
 //#region src/components/Box/Box.ts
 var Ve = c, B = {
-	breadcrumb: "_breadcrumb_qckku_1",
-	"breadcrumb-item": "_breadcrumb-item_qckku_8"
+	breadcrumb: "_breadcrumb_1ge7e_1",
+	"breadcrumb-item": "_breadcrumb-item_1ge7e_11"
 }, He = ({ breadcrumbs: e, onBreadcrumbClick: t }) => /* @__PURE__ */ A(c, {
 	className: B.breadcrumb,
 	children: e.map((n, r) => /* @__PURE__ */ j(c, {
@@ -380,13 +408,13 @@ var Ve = c, B = {
 		}) })]
 	}, n.id ? `${n.name}-${n.id}` : `crumb-${r}`))
 }), V = {
-	button: "_button_1whxt_1",
-	"button-secondary": "_button-secondary_1whxt_17",
-	"button-outlined": "_button-outlined_1whxt_22",
-	"button-small": "_button-small_1whxt_30",
-	"button-medium": "_button-medium_1whxt_34",
-	"button-large": "_button-large_1whxt_38",
-	"button-text": "_button-text_1whxt_42"
+	button: "_button_9cnxv_1",
+	"button-secondary": "_button-secondary_9cnxv_17",
+	"button-outlined": "_button-outlined_9cnxv_22",
+	"button-small": "_button-small_9cnxv_30",
+	"button-medium": "_button-medium_9cnxv_35",
+	"button-large": "_button-large_9cnxv_40",
+	"button-text": "_button-text_9cnxv_45"
 }, H = /* @__PURE__ */ function(e) {
 	return e.outlined = "outlined", e.primary = "primary", e.secondary = "secondary", e.text = "text", e;
 }({}), U = /* @__PURE__ */ function(e) {
@@ -421,8 +449,8 @@ var Ue = /* @__PURE__ */ function(e) {
 		}
 	});
 }, K = {
-	checkboxLabel: "_checkboxLabel_ag79y_1",
-	checkbox: "_checkbox_ag79y_1"
+	checkboxLabel: "_checkboxLabel_1cuf9_1",
+	checkbox: "_checkbox_1cuf9_1"
 }, We = ({ label: e, checked: t, onChange: n, iconKey: r }) => /* @__PURE__ */ j("label", {
 	className: K.checkboxLabel,
 	children: [
@@ -450,7 +478,8 @@ function Ke() {
 		spacing: 2,
 		sx: {
 			maxWidth: "100%",
-			width: "100%"
+			width: "100%",
+			minWidth: 0
 		},
 		children: [...[
 			,
@@ -474,6 +503,10 @@ function qe({ message: e, isVisible: t, style: n }) {
 	return t ? /* @__PURE__ */ A(c, {
 		sx: {
 			textAlign: "center",
+			minWidth: 0,
+			maxWidth: "100%",
+			boxSizing: "border-box",
+			overflowWrap: "anywhere",
 			fontSize: "21px",
 			fontWeight: "bolder",
 			border: "1px dashed var(--gray-1)",
@@ -486,18 +519,18 @@ function qe({ message: e, isVisible: t, style: n }) {
 	}) : null;
 }
 var q = {
-	container: "_container_1yalr_1",
-	"table-container": "_table-container_1yalr_5",
-	table: "_table_1yalr_5",
-	"table-row-active": "_table-row-active_1yalr_22",
-	title: "_title_1yalr_26",
-	"header-item": "_header-item_1yalr_30",
-	"body-item-default": "_body-item-default_1yalr_41",
-	"body-item-approved": "_body-item-approved_1yalr_42",
-	"body-item-declined": "_body-item-declined_1yalr_43",
-	"body-item-pending": "_body-item-pending_1yalr_44",
-	"header-cell": "_header-cell_1yalr_65",
-	"cell-content": "_cell-content_1yalr_73"
+	container: "_container_143v4_1",
+	"table-container": "_table-container_143v4_5",
+	table: "_table_143v4_5",
+	"table-row-active": "_table-row-active_143v4_22",
+	title: "_title_143v4_26",
+	"header-item": "_header-item_143v4_30",
+	"body-item-default": "_body-item-default_143v4_41",
+	"body-item-approved": "_body-item-approved_143v4_42",
+	"body-item-declined": "_body-item-declined_143v4_43",
+	"body-item-pending": "_body-item-pending_143v4_44",
+	"header-cell": "_header-cell_143v4_65",
+	"cell-content": "_cell-content_143v4_73"
 }, Je = M.default ?? M, Ye = ({ columns: e, emptyTableMessage: t = "No data available", isLoading: n = !1, onPageChange: r, onRowHover: i, pagination: a, selectedPage: o = 0, selectedRows: s, title: l }) => {
 	let u = a?.entries || [], d = a?.limit ? Math.ceil(a.totalCount / a.limit) : 1;
 	if (n) return /* @__PURE__ */ A(Ke, {});
@@ -526,6 +559,9 @@ var q = {
 					component: x,
 					elevation: 0,
 					className: q["table-container"],
+					tabIndex: 0,
+					role: "region",
+					"aria-label": l ? `${l} table` : "Data table",
 					children: /* @__PURE__ */ j(de, {
 						"aria-label": "data table",
 						size: "medium",
@@ -554,6 +590,9 @@ var q = {
 					})
 				}),
 				d > 1 && /* @__PURE__ */ A(Je, {
+					containerClassName: "box-bridge-pagination",
+					pageRangeDisplayed: 2,
+					marginPagesDisplayed: 1,
 					breakLabel: "...",
 					nextLabel: "next >",
 					onPageChange: r,
@@ -566,13 +605,13 @@ var q = {
 		})
 	});
 }, J = {
-	drawer: "_drawer_1cqqf_1",
-	slideIn: "_slideIn_1cqqf_1",
-	drawerHeader: "_drawerHeader_1cqqf_19",
-	title: "_title_1cqqf_25",
-	closeButton: "_closeButton_1cqqf_30",
-	drawerContent: "_drawerContent_1cqqf_35",
-	drawerFooter: "_drawerFooter_1cqqf_41"
+	drawer: "_drawer_jr4qi_1",
+	drawerHeader: "_drawerHeader_jr4qi_18",
+	title: "_title_jr4qi_24",
+	closeButton: "_closeButton_jr4qi_29",
+	drawerContent: "_drawerContent_jr4qi_34",
+	drawerFooter: "_drawerFooter_jr4qi_40",
+	drawerLayout: "_drawerLayout_jr4qi_55"
 }, Xe = ({ isOpen: e, headerTitle: t, onClose: n, onSave: r, saveLabel: i, children: a, onCancel: o, cancelLabel: s }) => /* @__PURE__ */ A(ie, {
 	anchor: "right",
 	open: e,
@@ -580,6 +619,7 @@ var q = {
 	classes: { paper: J.drawer },
 	children: /* @__PURE__ */ j(T, {
 		direction: "column",
+		className: J.drawerLayout,
 		children: [
 			/* @__PURE__ */ j(T, {
 				direction: "row",
@@ -594,6 +634,7 @@ var q = {
 					children: t
 				}), /* @__PURE__ */ A(y, {
 					size: "small",
+					"aria-label": "Close drawer",
 					onClick: n,
 					className: J.closeButton,
 					children: /* @__PURE__ */ A(N, { fontSize: "small" })
@@ -604,7 +645,10 @@ var q = {
 				children: a
 			}),
 			/* @__PURE__ */ j(T, {
-				direction: "row",
+				direction: {
+					xs: "column",
+					sm: "row"
+				},
 				spacing: 1,
 				sx: { justifyContent: "flex-end" },
 				className: J.drawerFooter,
@@ -629,8 +673,15 @@ function Ze({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, on
 		onSubmit: (e) => {
 			e.preventDefault(), a && a(e);
 		},
+		style: {
+			width: "100%",
+			minWidth: 0
+		},
 		children: /* @__PURE__ */ j(c, { children: [/* @__PURE__ */ A(c, {
-			sx: { width: "100%" },
+			sx: {
+				width: "100%",
+				minWidth: 0
+			},
 			children: e
 		}), /* @__PURE__ */ A(T, {
 			direction: "row",
@@ -639,8 +690,21 @@ function Ze({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, on
 				mt: "18px"
 			},
 			children: /* @__PURE__ */ j(T, {
-				direction: "row",
+				direction: {
+					xs: "column",
+					sm: "row"
+				},
 				spacing: 2,
+				sx: {
+					width: {
+						xs: "100%",
+						sm: "auto"
+					},
+					"& .MuiButton-root": { width: {
+						xs: "100%",
+						sm: "auto"
+					} }
+				},
 				children: [r ? /* @__PURE__ */ A(W, {
 					height: U.medium,
 					category: H.secondary,
@@ -660,14 +724,17 @@ function Ze({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, on
 //#region src/components/IconButton/IconButton.ts
 var Qe = y, $e = oe, et = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ A(ce, {
 	...n,
-	sx: [{ fontSize: "12px" }, ...Array.isArray(t) ? t : [t]],
+	sx: [{
+		fontSize: "12px",
+		overflowWrap: "anywhere"
+	}, ...Array.isArray(t) ? t : [t]],
 	underline: n.underline ?? "hover",
 	color: n.color ?? "primary",
 	children: e
 }), Y = {
-	menu: "_menu_17v8v_1",
-	"menu-container": "_menu-container_17v8v_5",
-	"menu-item": "_menu-item_17v8v_12"
+	menu: "_menu_k6frm_1",
+	"menu-container": "_menu-container_k6frm_5",
+	"menu-item": "_menu-item_k6frm_12"
 }, tt = ({ anchorEl: e, children: t, menuItems: n, onClose: r, ...i }) => /* @__PURE__ */ A(le, {
 	...i,
 	open: !!e,
@@ -685,9 +752,9 @@ var Qe = y, $e = oe, et = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ A(ce
 		}, t)), t]
 	})
 }), X = {
-	modal: "_modal_4waph_1",
-	"modal-title": "_modal-title_4waph_5",
-	"modal-content": "_modal-content_4waph_15"
+	modal: "_modal_1okm5_1",
+	"modal-title": "_modal-title_1okm5_5",
+	"modal-content": "_modal-content_1okm5_15"
 };
 //#endregion
 //#region src/components/Modal/Modal.tsx
@@ -698,7 +765,11 @@ function nt({ open: e, onClose: t, children: n, title: r, maxWidth: i = "420px" 
 		slotProps: { paper: {
 			sx: {
 				maxWidth: i,
-				width: "100%"
+				width: "calc(100% - 32px)",
+				m: "16px",
+				maxHeight: "calc(100dvh - 32px)",
+				boxSizing: "border-box",
+				minWidth: 0
 			},
 			className: X.modal
 		} },
@@ -712,8 +783,8 @@ function nt({ open: e, onClose: t, children: n, title: r, maxWidth: i = "420px" 
 	});
 }
 var rt = {
-	radioLabel: "_radioLabel_nta99_1",
-	radio: "_radio_nta99_1"
+	radioLabel: "_radioLabel_14kp5_1",
+	radio: "_radio_14kp5_1"
 }, it = ({ label: e, name: t, checked: n, onChange: r }) => /* @__PURE__ */ j("label", {
 	className: rt.radioLabel,
 	children: [/* @__PURE__ */ A(S, {
@@ -741,12 +812,11 @@ var rt = {
 		/* @__PURE__ */ A("div", { className: Z.bounce3 })
 	]
 }), ot = T, Q = {
-	ToastViewport: "_ToastViewport_lp8zn_1",
-	ToastRoot: "_ToastRoot_lp8zn_18",
-	ToastTitle: "_ToastTitle_lp8zn_30",
-	ToastDescription: "_ToastDescription_lp8zn_37",
-	ToastClose: "_ToastClose_lp8zn_44",
-	slideIn: "_slideIn_lp8zn_1"
+	ToastViewport: "_ToastViewport_m2sj3_1",
+	ToastRoot: "_ToastRoot_m2sj3_11",
+	ToastTitle: "_ToastTitle_m2sj3_23",
+	ToastDescription: "_ToastDescription_m2sj3_24",
+	ToastClose: "_ToastClose_m2sj3_25"
 };
 //#endregion
 //#region src/components/Toast/Toast.tsx
@@ -784,11 +854,11 @@ function st({ open: e, title: t, message: n, severity: r = "info", onClose: i, a
 //#endregion
 //#region src/components/Tooltip/Tooltip.ts
 var ct = ge, $ = {
-	typography: "_typography_1a10v_1",
-	bold: "_bold_1a10v_4",
-	error: "_error_1a10v_7",
-	success: "_success_1a10v_10",
-	warning: "_warning_1a10v_13"
+	typography: "_typography_b7f5k_1",
+	bold: "_bold_b7f5k_4",
+	error: "_error_b7f5k_7",
+	success: "_success_b7f5k_10",
+	warning: "_warning_b7f5k_13"
 }, lt = ({ variant: e = "body1", bold: t = !1, state: n, children: r, ...i }) => {
 	let a = [
 		$.typography,
@@ -823,7 +893,9 @@ var ct = ge, $ = {
 		direction: "column",
 		sx: {
 			alignItems: "flex-start",
-			width: "100%"
+			width: "100%",
+			minWidth: 0,
+			overflowWrap: "anywhere"
 		},
 		children: [
 			r && /* @__PURE__ */ A(k, {
@@ -844,6 +916,10 @@ var ct = ge, $ = {
 				accept: i,
 				style: {
 					display: "block",
+					boxSizing: "border-box",
+					width: "100%",
+					minWidth: 0,
+					maxWidth: "100%",
 					padding: "8px",
 					border: "1px solid #ddd",
 					borderRadius: "4px",
@@ -878,7 +954,9 @@ var ct = ge, $ = {
 			justifyContent: "flex-start",
 			alignItems: "flex-start",
 			flexDirection: "column",
-			width: "100%"
+			width: "100%",
+			minWidth: 0,
+			overflowWrap: "anywhere"
 		},
 		children: [n && /* @__PURE__ */ A(k, {
 			sx: {
@@ -913,7 +991,9 @@ var ct = ge, $ = {
 		direction: "column",
 		sx: {
 			alignItems: "flex-start",
-			width: "100%"
+			width: "100%",
+			minWidth: 0,
+			overflowWrap: "anywhere"
 		},
 		children: [n && /* @__PURE__ */ A(k, {
 			sx: {
@@ -956,7 +1036,9 @@ var ct = ge, $ = {
 			justifyContent: "flex-start",
 			alignItems: "baseline",
 			flexDirection: "column",
-			width: "100%"
+			width: "100%",
+			minWidth: 0,
+			overflowWrap: "anywhere"
 		},
 		children: [r && /* @__PURE__ */ A(k, {
 			sx: {
@@ -977,14 +1059,16 @@ var ct = ge, $ = {
 			fullWidth: !0,
 			sx: {
 				width: "100%",
+				minWidth: 0,
+				overflowWrap: "anywhere",
 				"& .MuiInputBase-root": { minHeight: "100px" }
 			},
 			...a
 		})]
 	})
 }), Ft = {
-	container: "_container_1c37o_1",
-	title: "_title_1c37o_8"
+	container: "_container_1x4tm_1",
+	title: "_title_1x4tm_8"
 }, It = ({ control: e, disabled: t, fieldTitle: n, name: r, placeholder: i, required: a, type: o, ...s }) => /* @__PURE__ */ A(P, {
 	name: r,
 	control: e,

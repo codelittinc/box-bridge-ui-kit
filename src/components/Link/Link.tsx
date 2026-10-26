@@ -12,7 +12,7 @@ const Link: React.FC<LinkProps> = ({ children, sx, ...otherProps }) => {
     // comes after the default font size so it wins.
     <MuiLink
       {...otherProps}
-      sx={[{ fontSize: "12px" }, ...(Array.isArray(sx) ? sx : [sx])]}
+      sx={[{ fontSize: "12px", overflowWrap: "anywhere" }, ...(Array.isArray(sx) ? sx : [sx])]}
       underline={otherProps.underline ?? "hover"}
       color={otherProps.color ?? "primary"}
     >
