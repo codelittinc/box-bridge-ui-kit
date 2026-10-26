@@ -19,22 +19,24 @@ const mix = (base: string, overlay: string, weight: number): string => {
 const isRgb = (color: string) => decomposeColor(color).type.startsWith("rgb");
 
 /**
- * The org primary colour when it reads at 3:1 on both the row surface
- * (`--gray-6`) and the selected-row tint, otherwise the theme text colour.
+ * The org primary colour when it reads at 3:1 on every background an active
+ * row can have: the row surface (`--gray-6`), the hover background
+ * (`--gray-3`) and the selected-row tint. Otherwise the theme text colour.
  * Org admins can pick any primary, so it cannot be assumed to pass.
  */
 export function computeFocusRing(vars: CssVars): string | undefined {
   const primary = vars["--primary-main"];
   const surface = vars["--gray-6"];
+  const hover = vars["--gray-3"];
   const text = vars["--common-black"];
-  if (!primary || !surface) return text;
+  if (!primary || !surface || !hover) return text;
 
   try {
-    if (!isRgb(primary) || !isRgb(surface)) return text;
-    const tint = mix(surface, primary, SELECTED_TINT);
-    const passes =
-      getContrastRatio(primary, surface) >= MIN_CONTRAST &&
-      getContrastRatio(primary, tint) >= MIN_CONTRAST;
+    if (![primary, surface, hover].every(isRgb)) return text;
+    const backgrounds = [surface, hover, mix(surface, primary, SELECTED_TINT)];
+    const passes = backgrounds.every(
+      (background) => getContrastRatio(primary, background) >= MIN_CONTRAST
+    );
     return passes ? primary : text;
   } catch {
     return text;
@@ -43,13 +45,17 @@ export function computeFocusRing(vars: CssVars): string | undefined {
 
 type ThemeConfig = Record<string, unknown>;
 
-/** Adds `--focus-ring` to the theme's `:root` CSS variables. */
+/**
+ * Adds `--focus-ring` to the theme's `:root` CSS variables, unless the theme
+ * already sets one.
+ */
 export function withFocusRing(config: ThemeConfig): ThemeConfig {
   const components = config.components as ThemeConfig | undefined;
   const baseline = components?.MuiCssBaseline as ThemeConfig | undefined;
   const overrides = baseline?.styleOverrides as ThemeConfig | undefined;
   const rootVars = overrides?.[":root"] as CssVars | undefined;
-  const focusRing = rootVars && computeFocusRing(rootVars);
+  if (!rootVars || rootVars["--focus-ring"]) return config;
+  const focusRing = computeFocusRing(rootVars);
   if (!focusRing) return config;
 
   return deepMerge(config, {
