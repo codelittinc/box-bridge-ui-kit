@@ -40,19 +40,22 @@
 
 .button-small {
   &[class*="MuiButton-root"] {
-    height: 36px;
+    min-height: 36px;
+    height: auto;
   }
 }
 
 .button-medium {
   &[class*="MuiButton-root"] {
-    height: 41px;
+    min-height: 41px;
+    height: auto;
   }
 }
 
 .button-large {
   &[class*="MuiButton-root"] {
-    height: 48px;
+    min-height: 48px;
+    height: auto;
   }
 }
 
@@ -62,7 +65,8 @@
     display: block;
     font-size: 16px;
     font-weight: 400;
-    height: 24px;
+    min-height: 24px;
+    height: auto;
     padding: 0;
     text-align: left;
     width: fit-content;
@@ -71,5 +75,17 @@
     &:hover {
       background: transparent;
     }
+  }
+}
+
+.button[class*="MuiButton-root"] {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (pointer: coarse) {
+  .button:not(.button-large)[class*="MuiButton-root"] {
+    min-height: 44px;
   }
 }

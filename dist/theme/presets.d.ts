@@ -22,6 +22,54 @@ export declare const themePresets: {
             };
         };
         components: {
+            MuiTypography: {
+                styleOverrides: {
+                    root: {
+                        overflowWrap: string;
+                        minWidth: number;
+                    };
+                };
+            };
+            MuiFormControl: {
+                styleOverrides: {
+                    root: {
+                        minWidth: number;
+                        maxWidth: string;
+                    };
+                };
+            };
+            MuiFormControlLabel: {
+                styleOverrides: {
+                    root: {
+                        minWidth: number;
+                    };
+                    label: {
+                        minWidth: number;
+                        overflowWrap: string;
+                    };
+                };
+            };
+            MuiMenuItem: {
+                styleOverrides: {
+                    root: {
+                        whiteSpace: string;
+                        overflowWrap: string;
+                    };
+                };
+            };
+            MuiInputBase: {
+                styleOverrides: {
+                    root: {
+                        minWidth: number;
+                        maxWidth: string;
+                    };
+                    input: {
+                        "@media (max-width: 599.95px)": {
+                            fontSize: string;
+                        };
+                    };
+                };
+            };
             MuiCssBaseline: {
                 styleOverrides: {
                     ":root": {

@@ -8,3 +8,9 @@
 .title {
   padding-bottom: 8px;
 }
+
+.container {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}

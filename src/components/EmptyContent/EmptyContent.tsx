@@ -18,6 +18,10 @@ function EmptyContent({
     <Box
       sx={{
         textAlign: "center",
+        minWidth: 0,
+        maxWidth: "100%",
+        boxSizing: "border-box",
+        overflowWrap: "anywhere",
         fontSize: "21px",
         fontWeight: "bolder",
         border: `1px dashed var(--gray-1)`,

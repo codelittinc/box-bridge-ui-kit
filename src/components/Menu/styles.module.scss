@@ -24,3 +24,15 @@
     }
   }
 }
+
+.menu .menu-container {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  .menu-item {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+}

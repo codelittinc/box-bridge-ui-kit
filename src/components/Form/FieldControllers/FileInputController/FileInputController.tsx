@@ -28,7 +28,7 @@ const FileInputController = <T extends FieldValues>({
       render={({ field: { onChange }, fieldState: { error } }) => (
         <Stack
           direction="column"
-          sx={{ alignItems: "flex-start", width: "100%" }}
+          sx={{ alignItems: "flex-start", width: "100%", minWidth: 0, overflowWrap: "anywhere" }}
         >
           {fieldTitle && (
             <Typography
@@ -51,6 +51,10 @@ const FileInputController = <T extends FieldValues>({
             accept={accept}
             style={{
               display: "block",
+              boxSizing: "border-box",
+              width: "100%",
+              minWidth: 0,
+              maxWidth: "100%",
               padding: "8px",
               border: "1px solid #ddd",
               borderRadius: "4px",

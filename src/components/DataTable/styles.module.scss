@@ -77,3 +77,36 @@
 .cell-content {
   width: 100%;
 }
+
+.container,
+.table,
+.table-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.title,
+.cell-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 599.95px) {
+  .table {
+    padding: 12px;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .table-container th,
+  .table-container td {
+    padding: 12px 8px;
+  }
+}
