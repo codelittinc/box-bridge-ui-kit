@@ -28,3 +28,28 @@ export const Default: Story = {
     );
   },
 };
+
+export const WithActions: Story = {
+  render: () => {
+    const [open, setOpen] = useState(true);
+    return (
+      <div>
+        <Button onClick={() => setOpen(true)}>Open Modal</Button>
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          title="Keyboard shortcuts"
+          maxWidth="560px"
+          data-testid="shortcuts-help-modal"
+          actions={
+            <Button category={ButtonCategory.outlined} onClick={() => setOpen(false)}>
+              Close
+            </Button>
+          }
+        >
+          <p>Press ? at any time to show this list.</p>
+        </Modal>
+      </div>
+    );
+  },
+};
