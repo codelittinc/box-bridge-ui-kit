@@ -180,17 +180,18 @@ import { Button, ButtonCategory, ButtonHeight } from "@codelittinc/box-bridge-ui
 import { DataTable } from "@codelittinc/box-bridge-ui-kit";
 
 const columns = [
-  { key: "name", header: "Name" },
-  { key: "email", header: "Email" },
-  { key: "role", header: "Role", render: (item) => <strong>{item.role}</strong> },
+  { name: "name", header: "Name" },
+  { name: "email", header: "Email" },
+  { name: "role", header: "Role", render: (_value, user) => <strong>{user.role}</strong> },
 ];
 
 <DataTable
-  data={users}
   columns={columns}
-  pagination={{ pageCount: 10, onPageChange: (page) => fetchPage(page) }}
+  pagination={{ entries: users, totalCount: users.length }}
 />
 ```
+
+Sortable columns accept `onSort` and a controlled `sortDirection` (`"asc"` or `"desc"` on the active column). The header renders a native button and exposes its direction through `aria-sort` on the column header. The consumer owns ordering: sort the complete result set before slicing a page, then reset the selected page when the sort changes. Columns without `onSort` remain static headers. See the `WithSorting` story for a working paginated example.
 
 ### Form with Field Controllers
 

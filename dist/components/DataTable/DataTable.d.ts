@@ -6,6 +6,10 @@ export type ItemsPagination<T> = {
 };
 export type ColumnConfiguration<T> = {
     header: string;
+    /** The consumer sorts the full result set before paginating. */
+    onSort?: () => void;
+    /** Only the currently sorted column has a direction. */
+    sortDirection?: "asc" | "desc";
     icon?: React.ReactNode;
     justify?: "start" | "center" | "end";
     name: keyof T | string;

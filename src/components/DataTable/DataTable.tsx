@@ -8,22 +8,16 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableSortLabel,
   Typography,
   Paper,
 } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import ReactPaginateImport from "react-paginate";
+import DataTablePagination from "./DataTablePagination";
 import { LoadingContent } from "../LoadingContent";
 import { EmptyContent } from "../EmptyContent";
 import styles from "./styles.module.scss";
 import "./pagination.css";
-
-// react-paginate is CJS flagged with __esModule. Bundlers that follow Node's
-// ESM interop (Vite 8, Node SSR) hand back the module object as the default
-// import instead of the component, so unwrap it.
-const ReactPaginate =
-  (ReactPaginateImport as unknown as { default?: typeof ReactPaginateImport })
-    .default ?? ReactPaginateImport;
 
 export type ItemsPagination<T> = {
   entries: T[];
@@ -38,6 +32,10 @@ const compose =
 
 export type ColumnConfiguration<T> = {
   header: string;
+  /** The consumer sorts the full result set before paginating. */
+  onSort?: () => void;
+  /** Only the currently sorted column has a direction. */
+  sortDirection?: "asc" | "desc";
   icon?: React.ReactNode;
   justify?: "start" | "center" | "end";
   name: keyof T | string;
@@ -220,10 +218,27 @@ const DataTable = <T extends Record<string, unknown>>({
                       key={index}
                       align={getAlign(column.justify)}
                       className={styles["header-cell"]}
+                      sortDirection={column.onSort ? column.sortDirection ?? false : false}
                     >
                       <Box className={styles["header-item"]}>
-                        {column.header}
-                        {column.icon && column.icon}
+                        {column.onSort ? (
+                          <TableSortLabel
+                            component="button"
+                            type="button"
+                            active={!!column.sortDirection}
+                            direction={column.sortDirection ?? "asc"}
+                            onClick={column.onSort}
+                            className={styles["sort-button"]}
+                            data-testid={`data-table-sort-${String(column.name)}-button`}
+                          >
+                            {column.header}
+                          </TableSortLabel>
+                        ) : (
+                          <>
+                            {column.header}
+                            {column.icon}
+                          </>
+                        )}
                       </Box>
                     </TableCell>
                   ))}
@@ -305,17 +320,10 @@ const DataTable = <T extends Record<string, unknown>>({
             </Table>
           </TableContainer>
           {pageCount > 1 && (
-            <ReactPaginate
-              containerClassName="box-bridge-pagination"
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
-              breakLabel="..."
-              nextLabel="next >"
+            <DataTablePagination
               onPageChange={onPageChange}
-              forcePage={selectedPage}
-              disableInitialCallback={true}
+              selectedPage={selectedPage}
               pageCount={pageCount}
-              previousLabel="< previous"
             />
           )}
         </Box>
