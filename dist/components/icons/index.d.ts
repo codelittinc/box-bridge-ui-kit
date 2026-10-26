@@ -4,6 +4,7 @@ export { default as CloseIcon } from '@mui/icons-material/Close';
 export { default as DeleteIcon } from '@mui/icons-material/Delete';
 export { default as DeleteOutlineIcon } from '@mui/icons-material/DeleteOutlineOutlined';
 export { default as EditIcon } from '@mui/icons-material/Edit';
+export { default as MenuIcon } from '@mui/icons-material/Menu';
 export { default as MoreHorizIcon } from '@mui/icons-material/MoreHoriz';
 export { default as SearchIcon } from '@mui/icons-material/Search';
 export { default as SendIcon } from '@mui/icons-material/Send';

@@ -13,10 +13,11 @@ import De from "@mui/icons-material/Clear";
 import Oe from "@mui/icons-material/Delete";
 import ke from "@mui/icons-material/DeleteOutlineOutlined";
 import Ae from "@mui/icons-material/Edit";
-import je from "@mui/icons-material/MoreHoriz";
-import Me from "@mui/icons-material/Search";
-import Ne from "@mui/icons-material/Send";
-import Pe from "@mui/icons-material/SmartToy";
+import je from "@mui/icons-material/Menu";
+import Me from "@mui/icons-material/MoreHoriz";
+import Ne from "@mui/icons-material/Search";
+import Pe from "@mui/icons-material/Send";
+import Fe from "@mui/icons-material/SmartToy";
 import { Controller as P } from "react-hook-form";
 //#region src/theme/defaultTheme.ts
 var F = {
@@ -60,14 +61,14 @@ function I(e, t) {
 }
 //#endregion
 //#region src/theme/BoxBridgeThemeProvider.tsx
-function Fe({ children: e, themeConfig: t }) {
+function Ie({ children: e, themeConfig: t }) {
 	let n = t ? I(F, t) : F, r = _e(n);
 	return /* @__PURE__ */ j(he, {
 		theme: r,
 		children: [/* @__PURE__ */ A(ee, {}), e]
 	});
 }
-var Ie = {
+var Le = {
 	default: F,
 	dark: {
 		palette: {
@@ -220,7 +221,7 @@ var Ie = {
 	accordionContent: "_accordionContent_wogrb_10",
 	chevronOpen: "_chevronOpen_wogrb_14",
 	chevronClosed: "_chevronClosed_wogrb_19"
-}, Le = ({ title: t, children: n, defaultOpen: r = !0 }) => {
+}, Re = ({ title: t, children: n, defaultOpen: r = !0 }) => {
 	let [i, a] = e.useState(r);
 	return /* @__PURE__ */ j(c, {
 		className: L.accordionContainer,
@@ -248,7 +249,7 @@ var Ie = {
 };
 //#endregion
 //#region src/components/Autocomplete/icons/ChevronUpDownIcon.tsx
-function Re() {
+function ze() {
 	return /* @__PURE__ */ j("svg", {
 		width: "16",
 		height: "16",
@@ -263,7 +264,7 @@ function Re() {
 }
 //#endregion
 //#region src/components/Autocomplete/icons/CheckIcon.tsx
-function ze() {
+function Be() {
 	return /* @__PURE__ */ A("svg", {
 		viewBox: "0 0 16 16",
 		fill: "currentColor",
@@ -278,7 +279,7 @@ function ze() {
 }
 //#endregion
 //#region src/components/Autocomplete/useAutoCompleteController.ts
-var Be = ({ options: e, value: t, onChange: o, ref: s }) => {
+var Ve = ({ options: e, value: t, onChange: o, ref: s }) => {
 	let [c, l] = a(!1), [u, d] = a(""), f = i(null);
 	n(s, () => ({ focus: () => {
 		f.current && f.current.focus();
@@ -311,7 +312,7 @@ var Be = ({ options: e, value: t, onChange: o, ref: s }) => {
 	"item-text": "_item-text_13yt1_118",
 	"item-indicator": "_item-indicator_13yt1_122"
 }, z = t(({ value: e, onChange: t, options: n, placeholder: r, label: i }, a) => {
-	let { matches: o, open: s, setOpen: c, searchValue: l, setSearchValue: u, selectedLabel: d } = Be({
+	let { matches: o, open: s, setOpen: c, searchValue: l, setSearchValue: u, selectedLabel: d } = Ve({
 		options: n,
 		value: e,
 		onChange: t,
@@ -339,7 +340,7 @@ var Be = ({ options: e, value: t, onChange: o, ref: s }) => {
 					className: R["toggle-button"],
 					onClick: () => c(!s),
 					tabIndex: -1,
-					children: /* @__PURE__ */ A(Re, {})
+					children: /* @__PURE__ */ A(ze, {})
 				})]
 			}), s && o.length > 0 && /* @__PURE__ */ A(xe, {
 				className: R.listbox,
@@ -353,7 +354,7 @@ var Be = ({ options: e, value: t, onChange: o, ref: s }) => {
 						children: n
 					}), String(r) === String(e) && /* @__PURE__ */ A("span", {
 						className: R["item-indicator"],
-						children: /* @__PURE__ */ A(ze, {})
+						children: /* @__PURE__ */ A(Be, {})
 					})]
 				}, r))
 			})]
@@ -363,10 +364,10 @@ var Be = ({ options: e, value: t, onChange: o, ref: s }) => {
 z.displayName = "Autocomplete";
 //#endregion
 //#region src/components/Box/Box.ts
-var Ve = c, B = {
+var He = c, B = {
 	breadcrumb: "_breadcrumb_qckku_1",
 	"breadcrumb-item": "_breadcrumb-item_qckku_8"
-}, He = ({ breadcrumbs: e, onBreadcrumbClick: t }) => /* @__PURE__ */ A(c, {
+}, Ue = ({ breadcrumbs: e, onBreadcrumbClick: t }) => /* @__PURE__ */ A(c, {
 	className: B.breadcrumb,
 	children: e.map((n, r) => /* @__PURE__ */ j(c, {
 		onClick: r < e.length - 1 ? () => t(n.id, r) : void 0,
@@ -404,7 +405,7 @@ var Ve = c, B = {
 W.displayName = "Button";
 //#endregion
 //#region src/components/Icon/Icon.tsx
-var Ue = /* @__PURE__ */ function(e) {
+var We = /* @__PURE__ */ function(e) {
 	return e.THREE_D = "3d", e.AUDIO = "audio", e.BOX_CANVAS = "box-canvas", e.BOX_NOTE = "box-note", e.DOCUMENT = "document", e.DRAWING = "drawing", e.FILE = "file", e.FOLDER = "folder", e.IMAGE = "image", e.PDF = "pdf", e.PRESENTATION = "presentation", e.SPREADSHEET = "spreadsheet", e.VIDEO = "video", e;
 }({}), G = ({ iconKey: e, width: t = 24, height: n = 24, className: r, style: i, basePath: a = "/assets/icons/" }) => {
 	let o = `${a}${e}.svg`;
@@ -423,7 +424,7 @@ var Ue = /* @__PURE__ */ function(e) {
 }, K = {
 	checkboxLabel: "_checkboxLabel_ag79y_1",
 	checkbox: "_checkbox_ag79y_1"
-}, We = ({ label: e, checked: t, onChange: n, iconKey: r }) => /* @__PURE__ */ j("label", {
+}, Ge = ({ label: e, checked: t, onChange: n, iconKey: r }) => /* @__PURE__ */ j("label", {
 	className: K.checkboxLabel,
 	children: [
 		/* @__PURE__ */ A(d, {
@@ -438,13 +439,13 @@ var Ue = /* @__PURE__ */ function(e) {
 			children: e
 		})
 	]
-}), Ge = {
+}), Ke = {
 	skeleton: "_skeleton_1ioze_1",
 	pulse: "_pulse_1ioze_1"
 };
 //#endregion
 //#region src/components/LoadingContent/LoadingContent.tsx
-function Ke() {
+function qe() {
 	return /* @__PURE__ */ A(T, {
 		direction: "column",
 		spacing: 2,
@@ -459,7 +460,7 @@ function Ke() {
 			,
 			,
 		]].map((e, t) => /* @__PURE__ */ A(c, {
-			className: Ge.skeleton,
+			className: Ke.skeleton,
 			sx: {
 				height: "24px",
 				bgcolor: "grey.300",
@@ -470,7 +471,7 @@ function Ke() {
 }
 //#endregion
 //#region src/components/EmptyContent/EmptyContent.tsx
-function qe({ message: e, isVisible: t, style: n }) {
+function Je({ message: e, isVisible: t, style: n }) {
 	return t ? /* @__PURE__ */ A(c, {
 		sx: {
 			textAlign: "center",
@@ -498,10 +499,10 @@ var q = {
 	"body-item-pending": "_body-item-pending_1yalr_44",
 	"header-cell": "_header-cell_1yalr_65",
 	"cell-content": "_cell-content_1yalr_73"
-}, Je = M.default ?? M, Ye = ({ columns: e, emptyTableMessage: t = "No data available", isLoading: n = !1, onPageChange: r, onRowHover: i, pagination: a, selectedPage: o = 0, selectedRows: s, title: l }) => {
+}, Ye = M.default ?? M, Xe = ({ columns: e, emptyTableMessage: t = "No data available", isLoading: n = !1, onPageChange: r, onRowHover: i, pagination: a, selectedPage: o = 0, selectedRows: s, title: l }) => {
 	let u = a?.entries || [], d = a?.limit ? Math.ceil(a.totalCount / a.limit) : 1;
-	if (n) return /* @__PURE__ */ A(Ke, {});
-	if (a?.totalCount === 0) return /* @__PURE__ */ A(qe, {
+	if (n) return /* @__PURE__ */ A(qe, {});
+	if (a?.totalCount === 0) return /* @__PURE__ */ A(Je, {
 		isVisible: !0,
 		message: t
 	});
@@ -553,7 +554,7 @@ var q = {
 						}) })]
 					})
 				}),
-				d > 1 && /* @__PURE__ */ A(Je, {
+				d > 1 && /* @__PURE__ */ A(Ye, {
 					breakLabel: "...",
 					nextLabel: "next >",
 					onPageChange: r,
@@ -573,7 +574,7 @@ var q = {
 	closeButton: "_closeButton_1cqqf_30",
 	drawerContent: "_drawerContent_1cqqf_35",
 	drawerFooter: "_drawerFooter_1cqqf_41"
-}, Xe = ({ isOpen: e, headerTitle: t, onClose: n, onSave: r, saveLabel: i, children: a, onCancel: o, cancelLabel: s }) => /* @__PURE__ */ A(ie, {
+}, Ze = ({ isOpen: e, headerTitle: t, onClose: n, onSave: r, saveLabel: i, children: a, onCancel: o, cancelLabel: s }) => /* @__PURE__ */ A(ie, {
 	anchor: "right",
 	open: e,
 	onClose: n,
@@ -624,7 +625,7 @@ var q = {
 });
 //#endregion
 //#region src/components/Form/Form.tsx
-function Ze({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, onCancelText: i, onSave: a }) {
+function Qe({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, onCancelText: i, onSave: a }) {
 	return /* @__PURE__ */ A("form", {
 		onSubmit: (e) => {
 			e.preventDefault(), a && a(e);
@@ -658,7 +659,7 @@ function Ze({ children: e, customSaveButtonText: t, disabled: n, onCancel: r, on
 }
 //#endregion
 //#region src/components/IconButton/IconButton.ts
-var Qe = y, $e = oe, et = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ A(ce, {
+var $e = y, et = oe, tt = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ A(ce, {
 	...n,
 	sx: [{ fontSize: "12px" }, ...Array.isArray(t) ? t : [t]],
 	underline: n.underline ?? "hover",
@@ -668,7 +669,7 @@ var Qe = y, $e = oe, et = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ A(ce
 	menu: "_menu_17v8v_1",
 	"menu-container": "_menu-container_17v8v_5",
 	"menu-item": "_menu-item_17v8v_12"
-}, tt = ({ anchorEl: e, children: t, menuItems: n, onClose: r, ...i }) => /* @__PURE__ */ A(le, {
+}, nt = ({ anchorEl: e, children: t, menuItems: n, onClose: r, ...i }) => /* @__PURE__ */ A(le, {
 	...i,
 	open: !!e,
 	className: Y.menu,
@@ -691,7 +692,7 @@ var Qe = y, $e = oe, et = ({ children: e, sx: t, ...n }) => /* @__PURE__ */ A(ce
 };
 //#endregion
 //#region src/components/Modal/Modal.tsx
-function nt({ open: e, onClose: t, children: n, title: r, maxWidth: i = "420px" }) {
+function rt({ open: e, onClose: t, children: n, title: r, maxWidth: i = "420px" }) {
 	return /* @__PURE__ */ j(m, {
 		open: e,
 		onClose: t,
@@ -711,15 +712,15 @@ function nt({ open: e, onClose: t, children: n, title: r, maxWidth: i = "420px" 
 		}) })]
 	});
 }
-var rt = {
+var it = {
 	radioLabel: "_radioLabel_nta99_1",
 	radio: "_radio_nta99_1"
-}, it = ({ label: e, name: t, checked: n, onChange: r }) => /* @__PURE__ */ j("label", {
-	className: rt.radioLabel,
+}, at = ({ label: e, name: t, checked: n, onChange: r }) => /* @__PURE__ */ j("label", {
+	className: it.radioLabel,
 	children: [/* @__PURE__ */ A(S, {
 		name: t,
 		size: "small",
-		className: rt.radio,
+		className: it.radio,
 		checked: n,
 		onChange: r
 	}), /* @__PURE__ */ A(k, {
@@ -733,14 +734,14 @@ var rt = {
 	bounce2: "_bounce2_clksx_21",
 	small: "_small_clksx_25",
 	large: "_large_clksx_30"
-}, at = ({ size: e = "medium" }) => /* @__PURE__ */ j("div", {
+}, ot = ({ size: e = "medium" }) => /* @__PURE__ */ j("div", {
 	className: `${Z.spinner} ${Z[e]}`,
 	children: [
 		/* @__PURE__ */ A("div", { className: Z.bounce1 }),
 		/* @__PURE__ */ A("div", { className: Z.bounce2 }),
 		/* @__PURE__ */ A("div", { className: Z.bounce3 })
 	]
-}), ot = T, Q = {
+}), st = T, Q = {
 	ToastViewport: "_ToastViewport_lp8zn_1",
 	ToastRoot: "_ToastRoot_lp8zn_18",
 	ToastTitle: "_ToastTitle_lp8zn_30",
@@ -750,7 +751,7 @@ var rt = {
 };
 //#endregion
 //#region src/components/Toast/Toast.tsx
-function st({ open: e, title: t, message: n, severity: r = "info", onClose: i, autoHideDuration: a = 3e3 }) {
+function ct({ open: e, title: t, message: n, severity: r = "info", onClose: i, autoHideDuration: a = 3e3 }) {
 	return /* @__PURE__ */ A(ue, {
 		open: e,
 		autoHideDuration: a,
@@ -783,13 +784,13 @@ function st({ open: e, title: t, message: n, severity: r = "info", onClose: i, a
 }
 //#endregion
 //#region src/components/Tooltip/Tooltip.ts
-var ct = ge, $ = {
+var lt = ge, $ = {
 	typography: "_typography_1a10v_1",
 	bold: "_bold_1a10v_4",
 	error: "_error_1a10v_7",
 	success: "_success_1a10v_10",
 	warning: "_warning_1a10v_13"
-}, lt = ({ variant: e = "body1", bold: t = !1, state: n, children: r, ...i }) => {
+}, ut = ({ variant: e = "body1", bold: t = !1, state: n, children: r, ...i }) => {
 	let a = [
 		$.typography,
 		t ? $.bold : "",
@@ -802,7 +803,7 @@ var ct = ge, $ = {
 		className: a,
 		children: r
 	});
-}, ut = O, dt = m, ft = g, pt = h, mt = ne, ht = te, gt = b, _t = re, vt = o, yt = _, bt = v, xt = se, St = x, Ct = f, wt = u, Tt = S, Et = C, Dt = p, Ot = d, kt = w, At = ({ name: e, control: t, required: n, options: r = [], withObjectValue: i = !0, ...a }) => /* @__PURE__ */ A(P, {
+}, dt = O, ft = m, pt = g, mt = h, ht = ne, gt = te, _t = b, vt = re, yt = o, bt = _, xt = v, St = se, Ct = x, wt = f, Tt = u, Et = S, Dt = C, Ot = p, kt = d, At = w, jt = ({ name: e, control: t, required: n, options: r = [], withObjectValue: i = !0, ...a }) => /* @__PURE__ */ A(P, {
 	name: e,
 	control: t,
 	rules: { required: n && "This field is required" },
@@ -815,7 +816,7 @@ var ct = ge, $ = {
 		value: t || null,
 		...a
 	})
-}), jt = ({ name: e, control: t, required: n, fieldTitle: r, accept: i, existingFileName: a }) => /* @__PURE__ */ A(P, {
+}), Mt = ({ name: e, control: t, required: n, fieldTitle: r, accept: i, existingFileName: a }) => /* @__PURE__ */ A(P, {
 	name: e,
 	control: t,
 	rules: { required: n && !a && "This field is required" },
@@ -869,7 +870,7 @@ var ct = ge, $ = {
 			})
 		]
 	})
-}), Mt = ({ name: e, control: t, fieldTitle: n, options: r, onValueChange: i }) => /* @__PURE__ */ A(P, {
+}), Nt = ({ name: e, control: t, fieldTitle: n, options: r, onValueChange: i }) => /* @__PURE__ */ A(P, {
 	name: e,
 	control: t,
 	render: ({ field: { onChange: e, value: t } }) => /* @__PURE__ */ j(c, {
@@ -905,7 +906,7 @@ var ct = ge, $ = {
 			})
 		})]
 	})
-}), Nt = ({ control: e, name: t, fieldTitle: n, placeholder: r, required: i, options: a }) => /* @__PURE__ */ A(P, {
+}), Pt = ({ control: e, name: t, fieldTitle: n, placeholder: r, required: i, options: a }) => /* @__PURE__ */ A(P, {
 	control: e,
 	name: t,
 	rules: { required: i && "This field is required" },
@@ -946,7 +947,7 @@ var ct = ge, $ = {
 			]
 		})]
 	})
-}), Pt = ({ name: e, control: t, required: n, fieldTitle: r, placeholder: i, ...a }) => /* @__PURE__ */ A(P, {
+}), Ft = ({ name: e, control: t, required: n, fieldTitle: r, placeholder: i, ...a }) => /* @__PURE__ */ A(P, {
 	name: e,
 	control: t,
 	rules: { required: n && "This field is required" },
@@ -982,17 +983,17 @@ var ct = ge, $ = {
 			...a
 		})]
 	})
-}), Ft = {
+}), It = {
 	container: "_container_1c37o_1",
 	title: "_title_1c37o_8"
-}, It = ({ control: e, disabled: t, fieldTitle: n, name: r, placeholder: i, required: a, type: o, ...s }) => /* @__PURE__ */ A(P, {
+}, Lt = ({ control: e, disabled: t, fieldTitle: n, name: r, placeholder: i, required: a, type: o, ...s }) => /* @__PURE__ */ A(P, {
 	name: r,
 	control: e,
 	rules: { required: a && "This field is required" },
 	render: ({ field: { onChange: e, value: r } }) => /* @__PURE__ */ j(c, {
-		className: Ft.container,
+		className: It.container,
 		children: [n && /* @__PURE__ */ A(k, {
-			className: Ft.title,
+			className: It.title,
 			variant: "body2",
 			children: n
 		}), /* @__PURE__ */ A(O, {
@@ -1010,4 +1011,4 @@ var ct = ge, $ = {
 	})
 });
 //#endregion
-export { Le as Accordion, Ee as AddIcon, vt as Alert, z as Autocomplete, At as AutocompleteController, Ve as Box, Fe as BoxBridgeThemeProvider, He as Breadcrumb, W as Button, H as ButtonCategory, U as ButtonHeight, wt as Card, We as Checkbox, Ct as Chip, Dt as CircularProgress, De as ClearIcon, Te as CloseIcon, Ye as DataTable, Oe as DeleteIcon, ke as DeleteOutlineIcon, dt as Dialog, ht as DialogActions, pt as DialogContent, mt as DialogContentText, ft as DialogTitle, _t as Divider, Xe as Drawer, Ae as EditIcon, qe as EmptyContent, jt as FileInputController, Ze as Form, yt as FormControl, bt as FormControlLabel, G as Icon, Qe as IconButton, Ue as IconKey, $e as InputAdornment, xt as InputLabel, et as Link, Ke as LoadingContent, tt as Menu, gt as MenuItem, nt as Modal, je as MoreHorizIcon, Ot as MuiCheckbox, St as Paper, Tt as Radio, it as RadioButton, Et as RadioGroup, Mt as RadioGroupController, Me as SearchIcon, kt as Select, Nt as SelectController, Ne as SendIcon, Pe as SmartToyIcon, at as Spinner, ot as Stack, Pt as TextAreaController, ut as TextField, It as TextInputController, st as Toast, ct as Tooltip, lt as Typography, I as deepMerge, F as defaultTheme, Ie as themePresets };
+export { Re as Accordion, Ee as AddIcon, yt as Alert, z as Autocomplete, jt as AutocompleteController, He as Box, Ie as BoxBridgeThemeProvider, Ue as Breadcrumb, W as Button, H as ButtonCategory, U as ButtonHeight, Tt as Card, Ge as Checkbox, wt as Chip, Ot as CircularProgress, De as ClearIcon, Te as CloseIcon, Xe as DataTable, Oe as DeleteIcon, ke as DeleteOutlineIcon, ft as Dialog, gt as DialogActions, mt as DialogContent, ht as DialogContentText, pt as DialogTitle, vt as Divider, Ze as Drawer, Ae as EditIcon, Je as EmptyContent, Mt as FileInputController, Qe as Form, bt as FormControl, xt as FormControlLabel, G as Icon, $e as IconButton, We as IconKey, et as InputAdornment, St as InputLabel, tt as Link, qe as LoadingContent, nt as Menu, je as MenuIcon, _t as MenuItem, rt as Modal, Me as MoreHorizIcon, kt as MuiCheckbox, Ct as Paper, Et as Radio, at as RadioButton, Dt as RadioGroup, Nt as RadioGroupController, Ne as SearchIcon, At as Select, Pt as SelectController, Pe as SendIcon, Fe as SmartToyIcon, ot as Spinner, st as Stack, Ft as TextAreaController, dt as TextField, Lt as TextInputController, ct as Toast, lt as Tooltip, ut as Typography, I as deepMerge, F as defaultTheme, Le as themePresets };
