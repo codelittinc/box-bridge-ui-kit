@@ -41,7 +41,14 @@ export const Error: Story = {
     return (
       <div>
         <Button onClick={() => setOpen(true)}>Show Error Toast</Button>
-        <Toast open={open} onClose={() => setOpen(false)} title="Error" message="Something went wrong." severity="error" />
+        <Toast
+          open={open}
+          onClose={() => setOpen(false)}
+          title="Error"
+          message="Something went wrong."
+          severity="error"
+          data-testid="error-toast"
+        />
       </div>
     );
   },

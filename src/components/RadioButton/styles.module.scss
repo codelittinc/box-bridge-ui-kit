@@ -11,3 +11,23 @@
     padding: 2px;
   }
 }
+
+.radioLabel {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+
+  > :last-child {
+    min-width: 0;
+  }
+
+  > :not(:last-child) {
+    flex-shrink: 0;
+  }
+}
+
+@media (pointer: coarse) {
+  .radioLabel {
+    min-height: 44px;
+  }
+}

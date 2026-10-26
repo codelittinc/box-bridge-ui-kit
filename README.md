@@ -239,3 +239,31 @@ npm run lint
 ```
 
 Storybook runs at `http://localhost:6006` and includes interactive examples for all components.
+
+## Responsive behavior
+
+Components fit their parent container and support narrow screens starting at 320px.
+Below 600px, form and drawer actions stack, table and modal padding decreases,
+and text inputs use 16px text to avoid focus zoom on mobile browsers. Long labels,
+filenames, breadcrumbs, and messages wrap. Buttons grow vertically for multiline
+labels and have a minimum 44px height on devices with a coarse pointer.
+
+Drawers stay within the viewport height with scrolling content and visible actions.
+Modals limit their height to the viewport and scroll their content. Wide tables
+scroll horizontally inside a keyboard-focusable region; pagination wraps below.
+
+MUI primitives such as `Box` and `Stack` retain their layout APIs. Use responsive
+`sx` values to arrange your own content, and set `minWidth: 0` on flex/grid children
+that contain tables or form controls:
+
+```tsx
+<Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+  <Box sx={{ flex: 1, minWidth: 0 }}>Main content</Box>
+  <Box sx={{ width: { xs: "100%", md: 320 }, minWidth: 0 }}>Sidebar</Box>
+</Stack>
+```
+
+Include `<meta name="viewport" content="width=device-width, initial-scale=1" />`
+in your application's HTML. Use the **Responsive / Library** Storybook story to
+review the components at phone, tablet, and desktop viewport widths. Consumer
+layouts and explicit fixed-width overrides still need to allow content to shrink.

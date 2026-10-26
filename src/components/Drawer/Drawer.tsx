@@ -39,7 +39,7 @@ const Drawer = ({
         paper: styles.drawer,
       }}
     >
-      <Stack direction="column">
+      <Stack direction="column" className={styles.drawerLayout}>
         <Stack
           direction="row"
           sx={{ justifyContent: "space-between", alignItems: "center" }}
@@ -50,6 +50,7 @@ const Drawer = ({
           </Typography>
           <IconButton
             size="small"
+            aria-label="Close drawer"
             onClick={onClose}
             className={styles.closeButton}
           >
@@ -58,7 +59,7 @@ const Drawer = ({
         </Stack>
         <Box className={styles.drawerContent}>{children}</Box>
         <Stack
-          direction="row"
+          direction={{ xs: "column", sm: "row" }}
           spacing={1}
           sx={{ justifyContent: "flex-end" }}
           className={styles.drawerFooter}
